@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pi="http://primefaces.org/ui">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/plugins/images/slider/logo.gif"/>
+        <title>Detalle de Evento Cultural</title>
+        <h:outputScript name="jquery-1.11.1.min.js" library="jquery" target="body" />  
+        <h:outputScript name="bootstrap.min.js" library="bootstrap/js" target="body" />
+        <h:outputStylesheet name="bootstrap.css" library="bootstrap/css" />
+
+        <h:outputStylesheet name="bootstrap.min.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="main.css" library="plugins/css/theme" />
+        <f:loadBundle basename="com.tesis.properties.messages" var="msg"/>
+        <h:outputStylesheet name="font-awesome.css" library="bootstrap/font-awesome/css" />
+    </h:head>
+    <h:body>
+        <ui:include src="headerPages.xhtml" />
+
+        <section>
+            <div class="container">
+
+                <div class="row row-offcanvas row-offcanvas-right">
+
+                    <div class="col-xs-12 col-sm-9">
+                        <p class="pull-right visible-xs">
+                            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+                        </p>
+                        <div class="jumbotron">
+                            <h1><i class="fa fa-archive"></i>&nbsp;<h:outputText value="#{cul_client.item.cultureName}"></h:outputText></h1>
+
+                        </div>
+                        <pi:messages closable="true"></pi:messages>
+                    </div><!--/span-->
+
+                    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item active">Visite</a>
+                            <a href="http://biblioteca.ues.edu.sv/portal/" class="list-group-item" target="_blank">Biblioteca Virtual</a>
+                            <a href="https://expediente.uesocc.edu.sv/" class="list-group-item" target="_blank">Expediente en L&iacute;nea</a>
+                            <a href="https://academica.ues.edu.sv/xol/" class="list-group-item" target="_blank">Administraci&oacute;n Acad&eacute;mica</a>
+                        </div>
+                    </div><!--/span-->
+                </div><!--/row-->
+                <div id="menu" class="">
+                    <div class="panel panel-success media-body">
+                        <table class="table table-hover">
+                            <h:form>
+                                <tr>
+                                    <td>
+                                        <div class="col-md-6">
+                                            <h2 style="font-weight: bold"><h:outputText value="#{cul_client.item.cultureName}"/></h2>
+                                            <p><h:outputText  style="font-weight: bold" value="Descripción: "></h:outputText><h:outputText value="#{cul_client.item.cultureDescription}"/></p>
+                                            <p><h:outputText  style="font-weight: bold" value="Campus: "></h:outputText><h:outputText value="#{cul_client.item.fkTesisCampus.campusName}"/></p>
+                                            <p><h:outputText  style="font-weight: bold" value="Descripción de Campus: "></h:outputText><h:outputText value="#{cul_client.item.fkTesisCampus.campusDescription}"/></p>
+                                            <p><h:outputText  style="font-weight: bold" value="Teléfono: "></h:outputText><h:outputText value="#{cul_client.item.fkTesisCampus.campusTel}"/></p>
+
+                                            <p><h:outputText  style="font-weight: bold" value="Actualización: "></h:outputText><h:outputText value="#{cul_client.item.updateDate.year+1900}-#{cul_client.item.updateDate.month+1}-#{cul_client.item.updateDate.date} #{cul_client.item.updateDate.hours}:#{cul_client.item.updateDate.minutes}:#{cul_client.item.updateDate.seconds}"/></p>
+                                            <p><h:outputText  style="font-weight: bold" value="Actualizado por: "></h:outputText><h:outputText value="#{cul_client.item.updateBy}"/></p>                                 
+
+                                            <p>
+                                                <h:outputText style="font-weight: bold" value="Descargar Archivo de Informaci&oacute;n:"/>
+                                            </p>
+                                            <p>
+                                                <h:commandLink action="#{cul_client.downloadArchivo()}" class="btn btn-default " >
+                                                    <i class="fa fa-download fa-2x"></i>
+                                                </h:commandLink> 
+                                            </p>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="/TesisAplication/faces/javax.faces.resource/#{cul_client.item.fkSystemImages.imageDescription}?ln=#{cul_client.item.fkSystemImages.imageUri}" target="_blank"><h:graphicImage class="img-rounded" library="#{cul_client.item.fkSystemImages.imageUri}" name="#{cul_client.item.fkSystemImages.imageDescription}" width="500px" height="320px"></h:graphicImage></a>    
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </h:form>
+                        </table>
+                    </div>
+
+                </div>
+                <hr></hr>
+
+                <div class="well"> 
+                    <h:link class="btn btn-primary" outcome="culturaClients" value="Regresar"></h:link>
+                    <p>© Universidad de El Salvador 2014</p>
+                </div>
+            </div>
+        </section>
+    </h:body>
+</html>
+

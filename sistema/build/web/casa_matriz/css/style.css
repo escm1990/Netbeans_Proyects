@@ -1,0 +1,108 @@
+/* CSS Document */
+
+body{padding:0px; margin:0px; font:14px/18px "Trebuchet MS", Arial, Helvetica, sans-serif;
+background-color:#fff;}
+div, p, ul, h2, h3, img{padding:0px; margin:0px;}
+ul{list-style-type:none;}
+/*----TOP PANEL----*/
+#baner{
+background:url(../images/bg.jpg) repeat-x #fff;
+width:100%;
+height:120px;
+position:relative;
+margin:0 auto;
+padding:0px;
+}
+/*---menu---*/
+#menu{
+background:#FFF;
+width:100%;
+height:40px;
+position:relative;
+margin:0 auto;
+padding:0px;
+border-bottom-style:solid;
+border-bottom-color:#CCCCCC;
+border-bottom-width:1px;
+}
+
+#menu ul{
+margin-top:10px;
+height:22px;
+position:absolute;
+right:0px;
+}
+#menu ul li{
+float:left;
+width:90px;
+height:22px;
+}
+#menu ul li a{
+display:block;
+background:url(../images/vertical-dot.gif) 0 no-repeat #fff;
+color:#3E3E3E;
+font-size:11px;
+text-decoration:none;
+text-align:center;
+line-height:22px;
+} 
+#menu ul li a:hover{
+text-decoration:none;
+background:url(../images/vertical-dot.gif) 0 no-repeat #fff; 
+color:#7C7900;
+}
+#menu ul li.verticallinenone a{
+display:block;background:#fff; 
+color:#3E3E3E; font-size:11px; 
+text-decoration:none; 
+text-align:center; 
+line-height:22px;
+} 
+#menu ul li.verticallinenone a:hover{
+text-decoration:none; 
+background:#fff; 
+color:#7C7900;
+}
+/*------------------------*/
+#body{
+	width:100%;	
+	margin:0 auto;
+	padding:0;
+	background-color:#fff;
+	color:#000;
+}
+/*------------------------------------------------left panel--------------------*/
+#izquierda{
+width:25%;
+float:left;
+text-align:center;
+}
+
+
+/*------------------------------------------------left panel--------------------*/
+#centro{
+width:75%;
+float:left;
+text-align:center;
+}
+/*------------------------------------------------right panel--------------------*/
+#derecha{
+width:25%;
+float:left;
+text-align:center;
+}
+/*-------------------------*/
+#footer{
+height:74px; 
+background:url(../images/footerbg.jpg) 0 0 repeat-x; 
+color:#000; 
+clear:both;
+}
+#copyright{
+width:400px;		
+float:left;
+margin-left:350px;
+margin-top:30px;
+
+}
+

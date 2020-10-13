@@ -1,0 +1,41 @@
+Para poder jugar con el truco de "Pinky y Cerebro responde!!!"
+
+se debe escribir en el campo de "Escribe la petición" de la siguiente forma:
+
+                           .palabra secreta.resto del texto
+
+esto no se muestra en pantalla, en cambio aparece el texto "Pinky por favor responde..."
+
+despues escribe tu pregunta de forma normal en el campo que dice: "Escribe pregunta"
+
+cuando presiones el boton "Responde", la palabra secreta que escribiste aparecera como la respuesta a tu pregunta
+
+mas informacion en: http://jc-mouse.blogspot.com/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pd: si, ya se que escribi "Manuel de Instrucciones" ;)

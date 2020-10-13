@@ -1,0 +1,111 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 16, 2014, 2:36:56 PM
+    Author     : luis.chavez
+*/
+
+th.tableHeader {
+	background-color: #FFFFFF !important;
+	border-color: #FFFFFF !important;
+	font-size: 13px !important;
+	color: #FFFFFF !important;
+	background-image: none !important;
+	text-shadow: none !important;
+	box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	-webkit-border-radius: 0 !important;
+	border-radius: 0 !important;
+	border-bottom: 1pt solid #DBDBDB !important;
+	text-align: left !important;
+}
+
+td.tableHeader {
+	background-color: #FFFFFF;
+	border: none;
+	text-align: left !important;
+}
+
+.ui-datatable-footer {
+	background-color: #FFFFFF !important;
+}
+
+table>tbody>tr>td.ui-datatable-even {
+	border-top: none !important;
+	border-left: none !important;
+	border-right: none  !important;
+	padding-top: 2px !important;
+	padding-bottom: 2px !important;
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+}
+
+tr.ui-datatable-even {
+	border-top: 1 solid #999999 !important;
+}
+
+.ui-datatable tbody td {
+	font-size: 13px !important;
+	font-family: Open Sans !important;
+	color: #555759 !important;
+}
+
+.ui-datatable>tbody>td:hover {
+	background-color: #EDEDED;
+}
+
+.ui-datatable-empty-message {
+	background-image: url('../images/nodata.png') !important;
+	background-repeat: no-repeat;
+}
+
+.ui-datatable-empty-message>td {
+	padding-top: 5px !important;
+	padding-left: 20px !important;
+}
+
+.ui-paginator {
+	background-color: #FFFFFF !important;
+	 
+}
+
+.ui-paginator-page {
+	background-color: #FFFFFF !important;
+	background-image: none !important;
+	box-shadow:none !important;
+	box-shadow: none !important;
+	border: none !important;
+}
+
+
+.ui-paginator-prev {
+	font-size: 14px !important;
+	font-family: Arial, Helvetica !important;
+	background-color: #FFFFFF !important;
+	background-color: #FFFFFF !important;
+	box-shadow:none !important;
+	box-shadow: none !important;
+	border: none !important;
+	background-image: none !important;
+}
+
+.ui-paginator-next {
+	font-size: 14px !important;
+	font-family: Arial, Helvetica !important;
+	background-color: #FFFFFF !important;
+	background-color: #FFFFFF !important;
+	box-shadow:none !important;
+	box-shadow: none !important;
+	border: none !important;
+	background-image: none !important;
+}
+
+.ui-paginator-current {
+	font-size: 14px !important;
+	font-family: Arial, Helvetica !important;
+	color: #6F7072 !important;
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<playlist>
+	<song id="1">
+		<titulo>TITULO</titulo>
+		<artista>ARTISTA</artista>
+		<album>ALBUM</album>
+		<location>DIRECION DEL ARCHIVO MP3</location>
+		<artLocation></artLocation>		
+	</song>
+</playlist>

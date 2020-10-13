@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/plugins/images/slider/logo.gif"/>
+        <title>DashBoard</title>
+        <h:outputStylesheet name="bootstrap.css" library="bootstrap/css" />
+        <h:outputStylesheet name="jquery.dataTables.css" library="plugins/css" />
+        <h:outputStylesheet name="bootstrap.min.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="animate.min.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="prettyPhoto.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="main.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="responsive.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="font-awesome.css" library="bootstrap/font-awesome/css" />
+        
+
+        <f:loadBundle basename="com.tesis.properties.messages" var="msg"/>
+    </h:head>
+    <h:body>
+        <header>
+            <ui:include src="resources/templates/clients/headerClients.xhtml" />
+        </header>
+        <div class="">
+        <section id="main-slider" class="no-margin">
+            <div class="carousel slide">
+                <ol class="carousel-indicators">
+                <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+                <li data-target="#main-slider" data-slide-to="1"></li>
+                <li data-target="#main-slider" data-slide-to="2"></li>
+                <li data-target="#main-slider" data-slide-to="3"></li>
+                </ol>
+            <div class="carousel-inner">
+                
+                <div class="item active" style="background-image: url(#{resource['plugins/images/slider/imgues5.jpg']})">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-sm-5 hidden-xs animation animated-item-4">
+                                <!--<div class="slider-img">
+                                    <h:graphicImage class="img-responsive" library="plugins/images/slider/" name="logo.jpg"></h:graphicImage>   
+                                </div>-->
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">Universidad de El Salvador</h1>
+                                    <h2 class="animation animated-item-2">Facultad Multidisciplinaria de Occidente</h2>
+                                </div>
+                            </div>
+
+                          
+
+                        </div>
+                    </div>
+                </div><!--/.item-->
+                
+                
+                <div class="item" style="background-image: url(#{resource['plugins/images/slider/imgues2.jpg']})">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-sm-6">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">Oferta Acad&eacute;mica UES FMOCC</h1>
+                                    <h2 class="animation animated-item-2">Carreras disponibles, Pensum,  etc...</h2>
+                                    <h:form>
+                                        <p><h:commandButton  class="btn-slide animation animated-item-3" action="#{offer_client.oferta()}" value="Leer Mas"></h:commandButton></p>
+                                    </h:form>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 hidden-xs animation animated-item-4">
+                                <div class="slider-img">
+                                     <h:graphicImage class="img-responsive" library="plugins/images/slider/" name="img3.png"></h:graphicImage>    
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!--/.item-->
+
+                <div class="item" style="background-image: url(#{resource['plugins/images/slider/imgues1.jpg']})">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-sm-6">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">Infraestructura UES FMOCC</h1>
+                                    <h2 class="animation animated-item-2">Detalle de Aulas, Edificios, Zonas de Esparcimiento, &Aacute;reas Verdes...</h2>
+                                    <h:form>
+                                        <p><h:commandButton  class="btn-slide animation animated-item-3" action="#{infra_client.infraestructura()}" value="Leer Mas"></h:commandButton></p>
+                                    </h:form>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 hidden-xs animation animated-item-4">
+                                <div class="slider-img">
+                                     <h:graphicImage class="img-responsive" library="plugins/images/slider/" name="img2.png"></h:graphicImage>   
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!--/.item-->
+
+                <div class="item" style="background-image: url(#{resource['plugins/images/slider/imgues4.jpg']})">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-sm-6">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">Maestr&iacute;as</h1>
+                                    <h2 class="animation animated-item-2">Nuevas Maestr&iacute;as, requisitos, entre otros...</h2>
+                                    <h:form>
+                                        <p><h:commandButton  class="btn-slide animation animated-item-3" action="#{mas_client.maestria()}" value="Leer Mas"></h:commandButton></p>
+                                    </h:form>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 hidden-xs animation animated-item-4">
+                                <div class="slider-img">
+                                    <h:graphicImage class="img-responsive" library="plugins/images/slider/" name="img1.png"></h:graphicImage> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+        <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <a class="next hidden-xs" href="#main-slider" data-slide="next">
+            <i class="fa fa-chevron-right"></i>
+        </a>
+    </section>
+         </div>
+       <section>
+        <div class="container">
+
+            <div class="row row-offcanvas row-offcanvas-right">
+                <div class="col-xs-12 col-sm-9">
+                    <p:messages closable="true"></p:messages>
+                    <div class="jumbotron">
+                        <h1><i class="fa fa-dashboard"></i>&nbsp;Bienvenido, usuario!</h1>
+                        <p>Ac&aacute; puedes ver la informaci&oacute;n m&aacute;s actualizada.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 col-sm-6 col-lg-4">
+                            <h2>#{msg['index.infraestructura.title']}</h2>
+                            <p>Aulas, Edificios, Zonas de Esparcimiento, etc. </p>
+                            <h:form>
+                                <p><h:commandButton  class="btn btn-primary" action="#{infra_client.infraestructura()}" value="Ver detalle »"></h:commandButton></p>
+                            </h:form>
+                        </div><!--/span-->
+                        <div class="col-6 col-sm-6 col-lg-4">
+                            <h2>#{msg['index.oferta.ues.title']}</h2>
+                            <p>Carreras disponibles, Pensum,  etc. </p>
+                            <h:form>
+                                <p><h:commandButton  class="btn btn-primary" action="#{offer_client.oferta()}" value="Ver detalle »"></h:commandButton></p>
+                            </h:form>
+                        </div><!--/span-->
+                        <div class="col-6 col-sm-6 col-lg-4">
+                            <h2>#{msg['index.planes.ues.title']}</h2>
+                            <p>Cursos de Ingl&eacute;s, Koreano, Entre otros. </p>
+                             <h:form>
+                                 <p><h:commandButton  class="btn btn-primary" action="#{plan_client.planes()}" value="Ver detalle »"></h:commandButton></p>
+                            </h:form>
+                        </div><!--/span-->
+                        <div class="col-6 col-sm-6 col-lg-4">
+                            <h2>#{msg['index.cultura.ues.title']}</h2>
+                            <p>Desfile Buffo, Bailes, 25 de julio, Graduaciones. </p>
+                             <h:form>
+                                 <p><h:commandButton  class="btn btn-primary" action="#{cul_client.cultura()}" value="Ver detalle »"></h:commandButton></p>
+                            </h:form>
+                        </div><!--/span-->
+                        <div class="col-6 col-sm-6 col-lg-4">
+                            <h2>#{msg['index.maestrias.ues.title']}</h2>
+                            <p>Nuevas Maestr&iacute;as, requisitos, entre otros. </p>
+                            <h:form>
+                                <p><h:commandButton  class="btn btn-primary" action="#{mas_client.maestria()}" value="Ver detalle »"></h:commandButton></p>
+                            </h:form>
+                        </div><!--/span-->
+                    </div><!--/row-->
+                </div><!--/span-->
+
+                <div class="col-xs-9 col-sm-3" id="sidebar" role="navigation">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item active">Visite</a>
+                        <a href="http://biblioteca.ues.edu.sv/portal/" class="list-group-item" target="_blank">Biblioteca Virtual</a>
+                        <a href="https://expediente.uesocc.edu.sv/" class="list-group-item" target="_blank">Expediente en L&iacute;nea</a>
+                        <a href="https://academica.ues.edu.sv/xol/" class="list-group-item" target="_blank">Administraci&oacute;n Acad&eacute;mica</a>
+                    </div>
+                </div><!--/span-->
+            </div><!--/row-->
+            <hr></hr>
+
+            <footer>
+                <p>© Universidad de El Salvador 2014</p>
+            </footer>
+
+        </div>
+        
+    </section>
+        
+        <h:outputScript name="jquery-1.11.1.min.js" library="jquery" target="body" /> 
+        <h:outputScript name="jquery.dataTables.min.js" library="jquery" target="body" />
+        <h:outputScript name="jquery.dataTables.js" library="jquery" target="body" />
+        <h:outputScript name="bootstrap.min.js" library="bootstrap/js" target="body" />
+        
+        <h:outputScript name="jquery.js" library="jquery/theme" target="body" />
+        <h:outputScript name="bootstrap.min.js" library="jquery/theme" target="body" />
+        <h:outputScript name="jquery.prettyPhoto.js" library="jquery/theme" target="body" />
+        <h:outputScript name="jquery.isotope.min.js" library="jquery/theme" target="body" /> 
+        <h:outputScript name="main.js" library="jquery/theme" target="body" />
+        <h:outputScript name="wow.min.js" library="jquery/theme" target="body" />
+
+    </h:body>
+</html>
+

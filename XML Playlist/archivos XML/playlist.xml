@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<playlist>
+	<song id="1">
+		<titulo>Mi Cordura</titulo>
+		<artista>La logia</artista>
+		<album>Nacer para morir</album>
+		<location>E:/mp3/Mi Cordura.mp3</location>
+		<artLocation>/album/album3.jpg</artLocation>		
+	</song>
+	<song id="2">
+		<titulo>Jamas la vi</titulo>
+		<artista>La Logia</artista>
+		<album>Morir para nacer</album>
+		<location>e:/mp3/Jamas La Vi.mp3</location>
+		<artLocation></artLocation>		
+	</song>
+	<song id="3">
+		<titulo>Patria</titulo>
+		<artista>La Logia</artista>
+		<album>Escalofriante</album>
+		<location>e:\mp3\00000000000Patria.mp3</location>
+		<artLocation>/album/album5.jpg</artLocation>		
+	</song>
+	<song id="4">
+		<titulo>La Vieja</titulo>
+		<artista>Cordura</artista>
+		<album>No tengo idea</album>
+		<location>e:\mp3\08 - La Vieja.mp3</location>
+		<artLocation>/album/album5.jpg</artLocation>		
+	</song>
+	<song id="5">
+		<titulo>Knockin On heavens door</titulo>
+		<artista>GUns and roses</artista>
+		<album></album>
+		<location>e:\mp3\007.-KNOCKIN ON HEAVEN.mp3</location>
+		<artLocation>/album/album5.jpg</artLocation>		
+	</song>
+</playlist>

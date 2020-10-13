@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pi="http://primefaces.org/ui"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:head>    
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/plugins/images/slider/logo.gif"/>
+        <title>Infraestructura UES FMOCC</title>
+        <h:outputScript name="jquery-1.11.1.min.js" library="jquery" target="body" />  
+        <h:outputScript name="bootstrap.min.js" library="bootstrap/js" target="body" />
+        <h:outputStylesheet name="bootstrap.css" library="bootstrap/css" />
+        <h:outputStylesheet name="styleTablesClients.css" library="plugins/css" /> 
+
+        <h:outputStylesheet name="bootstrap.min.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="main.css" library="plugins/css/theme" />
+        <f:loadBundle basename="com.tesis.properties.messages" var="msg"/>  
+        <h:outputStylesheet name="font-awesome.css" library="bootstrap/font-awesome/css" />
+    </h:head>
+    <h:body>
+        <header>
+            <ui:include src="headerPages.xhtml" />
+        </header>
+        <section>
+            <div class="container">
+
+                <div class="row row-offcanvas row-offcanvas-right">
+
+                    <div class="col-xs-12 col-sm-9">
+                        <p class="pull-right visible-xs">
+                            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+                        </p>
+                        <div class="jumbotron">
+                            <h1><i class="fa fa-building-o"></i>&nbsp;Infraestructura UES!</h1>
+                            <p>Por favor selecciona el &aacute;rea que quieres recorrer!</p>
+                        </div>
+                        <pi:messages closable="true"></pi:messages>
+                    </div><!--/span-->
+
+                    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item active">Visite</a>
+                            <a href="http://biblioteca.ues.edu.sv/portal/" class="list-group-item" target="_blank">Biblioteca Virtual</a>
+                            <a href="https://expediente.uesocc.edu.sv/" class="list-group-item" target="_blank">Expediente en L&iacute;nea</a>
+                            <a href="https://academica.ues.edu.sv/xol/" class="list-group-item" target="_blank">Administraci&oacute;n Acad&eacute;mica</a>
+                        </div>
+                    </div><!--/span-->
+                </div><!--/row-->
+                <div id="menu" class="container" style="height: 300px;">
+                    <div class="panel" style="background-color: #FFFFFF">
+                        <div class="panel-heading"></div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <h:form>
+                                    <div class="col-md-5" >
+                                    </div>                         
+                                    <div class="col-md-4">
+                                        <h2><h:inputText  class="form-control"  p:placeholder="Nombre de Infraestructura" value="#{infra_client.criterio}"/></h2>
+                                    </div>
+                                    <div class="col-md-1" style="margin-top: 6px;">
+                                        <h:commandLink action="#{infra_client.busqueda()}" class="btn btn-primary">
+                                            <i class="fa fa-search fa-1x"></i>
+                                        </h:commandLink>
+
+                                    </div>
+                                    <div class="col-md-1" style="margin-top: 6px;">
+                                        <h:commandLink action="#{infra_client.busqueda()}" class="btn btn-primary">
+                                            <i class="fa fa-eraser "></i>&nbsp; <h:outputText value="Ver Todos" />
+                                        </h:commandLink>
+                                    </div>
+                                </h:form>
+                            </div>
+
+                            <div class="col-md-12">                           
+                                <h:form>
+                                    <pi:dataTable value="#{infra_client.lista}" var="item" class="table table-hover" id="list_user" style="padding: 0px 0px; border: 1px solid #FFFFFF;" 
+                                                  emptyMessage="No se encontraron resultados..." rows="6"
+                                                  paginator="true" paginatorPosition="bottom"
+                                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                                  rowsPerPageTemplate="6"
+                                                  rowKey="#{item.codTesisInfrastructure}"                                       
+                                                  >
+
+                                        <pi:column class="info" styleClass="tableHeader" style="padding: 0px 0px; border: 1px solid #FFFFFF;">
+                                            <div class="panel panel-success media-body">
+
+                                                <div class="col-md-8" style="margin-right: 35px;">
+                                                    <h2><h:outputText value="#{item.infraestructuraName}"/></h2>
+                                                    <p><h:outputText style="font-weight: bold" value="Descripci&oacute;n: "></h:outputText><h:outputText value="#{item.infraestucturaDescription}"/></p>
+                                                    <p><h:outputText style="font-weight: bold" value="Actualización: "></h:outputText> <h:outputText value="#{item.updateDate.year+1900}-#{item.updateDate.month+1}-#{item.updateDate.date} #{item.updateDate.hours}:#{item.updateDate.minutes}:#{item.updateDate.seconds}"/></p>
+
+                                                    <p> 
+                                                        <h:commandLink class="btn btn-primary" action="#{infra_client.submit()}" value="Ver detalle »" style="color: #FFFFFF;">
+                                                            <f:setPropertyActionListener target="#{infra_client.select}" value="#{item}" /> 
+                                                        </h:commandLink></p>
+
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h:graphicImage class="img-rounded" library="#{item.fkTesisSystemImages.imageUri}" name="#{item.fkTesisSystemImages.imageDescription}" width="290px" height="200px"></h:graphicImage>    
+                                                </div>
+
+
+                                            </div>
+                                        </pi:column>
+
+                                    </pi:dataTable>
+
+                                </h:form> 
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </section>
+    </h:body>
+</html>
+

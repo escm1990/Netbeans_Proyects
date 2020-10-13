@@ -1,0 +1,536 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pi="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/plugins/images/slider/logo.gif"/>
+        <title>DashBoard Administraci&oacute;n</title>
+        <h:outputScript name="jquery-1.11.1.min.js" library="jquery" target="body" /> 
+        <h:outputScript name="bootstrap.min.js" library="bootstrap/js" target="body" />
+        <h:outputStylesheet name="bootstrap.css" library="bootstrap/css" />
+        <h:outputScript name="administration.js" library="jquery/Administration" target="body" />
+
+        <h:outputStylesheet name="bootstrap.min.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="main.css" library="plugins/css/theme" />
+        <f:loadBundle basename="com.tesis.properties.messages" var="msg"/>
+        <h:outputStylesheet name="font-awesome.css" library="bootstrap/font-awesome/css" />
+    </h:head>
+    <h:body>
+        <ui:include src="headerAdministration.xhtml" />     
+        <section>
+            <div class="container">
+
+                <div class="row row-offcanvas row-offcanvas-right">
+
+                    <div class="">
+                        <div class="jumbotron">
+                            <h1><i class="fa fa-dashboard"></i>&nbsp;Administraci&oacute;n de Sistema!</h1>
+
+                            <p>Seleccione el área que desea actualizar.</p>
+                        </div>
+                        <pi:messages id="mensaje" closable="true"></pi:messages>
+
+                        <div class="row">
+                            <div class="col-6 col-sm-6 col-lg-4">
+                                <h2>#{msg['index.infraestructura.title']}</h2>
+                                <p>Aulas, Edificios, Zonas de Esparcimiento, etc. </p>
+
+                                <p><button  class="btn btn-success" data-toggle="modal" data-target="#addIn" id="addInfra">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                    <h:link outcome="#{admin_controller.viewUpdateInfraestructura}" class="btn btn-success" style="margin-left: 4px;">
+                                        <i class="fa fa-pencil"></i>
+                                    </h:link>
+                                    <h:link outcome="#{admin_controller.viewDeleteInfraestructura}" class="btn btn-success" style="margin-left: 4px;">
+                                        <i class="fa fa-remove"></i>
+                                    </h:link>     
+                                </p>
+
+                            </div><!--/span-->
+                            <div class="col-6 col-sm-6 col-lg-4">
+                                <h2>#{msg['index.oferta.ues.title']}</h2>
+                                <p>Carreras disponibles, Pensum,  etc. </p>
+                                <p><button  class="btn btn-success" id="addO" data-toggle="modal" data-target="#addOfer">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                    <h:link outcome="#{admin_controller.viewUpdateOffer}" class="btn btn-success" style="margin-left: 4px;">
+                                        <i class="fa fa-pencil"></i>
+                                    </h:link>
+                                    <h:link outcome="#{admin_controller.viewDeleteOffer}" class="btn btn-success" style="margin-left: 4px;">
+                                        <i class="fa fa-remove"></i>
+                                    </h:link>   
+                                </p>
+
+                            </div><!--/span-->
+                            <div class="col-6 col-sm-6 col-lg-4">
+                                <h2>#{msg['index.planes.ues.title']}</h2>
+                                <p>Cursos de Ingl&eacute;s, Koreano, Entre otros. </p>
+                                <p><button  class="btn btn-success" id="addP" data-toggle="modal" data-target="#addPlan">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                    <h:link outcome="#{admin_controller.viewUpdatePlan}" class="btn btn-success" style="margin-left: 4px;">
+                                        <i class="fa fa-pencil"></i>
+                                    </h:link>
+                                    <h:link outcome="#{admin_controller.viewDeletePlan}" class="btn btn-success" style="margin-left: 4px;">
+                                        <i class="fa fa-remove"></i>
+                                    </h:link>  
+                                </p>
+
+                            </div><!--/span-->
+                            <div class="col-6 col-sm-6 col-lg-4">
+                                <h2>#{msg['index.cultura.ues.title']}</h2>
+                                <p>Desfile Buffo, Bailes, 25 de julio, Graduaciones. </p>
+                                <p><button  class="btn btn-success" id="addCul" data-toggle="modal" data-target="#addCu">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                    <h:link outcome="#{admin_controller.viewUpdateCulture}" class="btn btn-success" style="margin-left: 4px;">
+                                        <i class="fa fa-pencil"></i>
+                                    </h:link>
+                                    <h:link outcome="#{admin_controller.viewDeleteCulture}" class="btn btn-success" style="margin-left: 4px;">
+                                        <i class="fa fa-remove"></i>
+                                    </h:link> 
+                                </p>
+
+                            </div><!--/span-->
+                            <div class="col-6 col-sm-6 col-lg-4">
+                                <h2>#{msg['index.maestrias.ues.title']}</h2>
+                                <p>Nuevas Maestr&iacute;as, Horarios, entre otros. </p>
+                                <p><button  class="btn btn-success" id="addMast" data-toggle="modal" data-target="#addMa">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                    <h:link outcome="#{admin_controller.viewUpdateMaster}" class="btn btn-success" style="margin-left: 4px;">
+                                        <i class="fa fa-pencil"></i>
+                                    </h:link>
+                                    <h:link outcome="#{admin_controller.viewDeleteMaster}" class="btn btn-success" style="margin-left: 4px;">
+                                        <i class="fa fa-remove"></i>
+                                    </h:link>
+                                </p>
+
+                            </div><!--/span-->
+                        </div><!--/row-->
+                    </div><!--/span-->
+                </div><!--/row-->
+
+                <div class="modal fade" id="addIn" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" id="ForgetPassClose" class="close"
+                                        data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">Ingrese Nueva Infraestructura</h4>
+                            </div>
+                            <h:form enctype="multipart/form-data" id="formdata">
+                                <div class="modal-body">
+                                    <div>
+                                        <div class="col-md-6">
+                                            <h:graphicImage class="img-rounded" library="plugins/images" name="image.png" width="110px" height="100px" id="imgSalida"/>
+                                            <div> 
+                                                <button class="btn btn-default" id="cargar" type="button">
+                                                    <i class="fa fa-photo"></i>
+                                                </button>
+                                                <button class="btn btn-default" id="eliminar" type="button">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                                <h:inputFile id="file-input" style="display: none" value="#{newInfraestructure.image}" required="true" requiredMessage="Imagen no Seleccionada!">
+                                                    <f:validator validatorId="FileUploadValidator" />
+                                                </h:inputFile>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" style="height: 140px;">
+                                            <label for="campus">Campus: </label>
+                                            <h:selectOneMenu id="campus" class="form-control" value="#{newInfraestructure.campus}">
+                                                <f:selectItem id="item1" itemLabel="UES FMOCC" itemValue="1" />                                      
+                                            </h:selectOneMenu>
+                                        </div>
+
+                                    </div>
+                                     <div style="padding-top: 10px;">
+                                        <label for="anexo">Anexar Archivo: </label>
+                                        <h:inputFile id="anexo" value="#{newInfraestructure.file}" class="form-control" required="true" requiredMessage="Archivo no Seleccionado!"/>
+                                    </div>
+
+                                    <div>
+                                        <label for="nombreInfa">Nombre de Infraestrucutra: </label>
+                                        <h:inputText id="nombreInfa" value="#{newInfraestructure.nombre}" class="form-control" p:placeholder="Nombre de Infraestructura" required="true" requiredMessage="Nombre de Infraestructura es Obligatorio!">
+                                            <pi:ajax update="msgNameInfra" event="keyup" />
+                                        </h:inputText>
+                                        <pi:messages for="nombreInfa" id="msgNameInfra" closable="true"/>
+                                    </div>
+                                    <div>
+                                        <label for="typeInfra">Tipo: </label>
+                                        <h:selectOneMenu id="typeInfra" class="form-control" value="#{newInfraestructure.tipo}">
+                                            <f:selectItem id="itemEdi" itemLabel="Edificio" itemValue="Edificio" />   
+                                            <f:selectItem id="itemAul" itemLabel="Aula" itemValue="Aula" />  
+                                            <f:selectItem id="itemOth" itemLabel="Otro" itemValue="Otro" />  
+                                        </h:selectOneMenu>
+                                    </div>
+
+                                    <div>
+                                        <label for="desInfa">Descripci&oacute;n de Infraestrucutra: </label>
+                                        <h:inputTextarea id="desInfa" value="#{newInfraestructure.descripcion}" class="form-control" p:placeholder="Descripci&oacute;n"></h:inputTextarea>
+                                    </div>
+
+                                    <div>
+                                        <label for="desInfa">Ubicaci&oacute;n de Infraestrucutra: </label>
+                                        <h:inputTextarea id="locInfa" value="#{newInfraestructure.ubicacion}" class="form-control" p:placeholder="Ubicaci&oacute;n"></h:inputTextarea>
+                                    </div>
+
+                                    <div>
+                                        <label for="heigthInfa">Alto: </label>
+                                        <h:inputText id="heigthInfa" class="form-control" p:placeholder="Alto (Mts)"
+                                                     value="#{newInfraestructure.alto}"></h:inputText>
+                                    </div>
+
+                                    <div>
+                                        <label for="weigthInfa">Ancho: </label>
+                                        <h:inputText id="weigthInfa" class="form-control" p:placeholder="Ancho (Mts)"
+                                                     value="#{newInfraestructure.ancho}"></h:inputText>
+                                    </div>
+
+                                    <div>
+                                        <label for="lengthInfa">Largo: </label>
+                                        <h:inputText id="lengthInfa" class="form-control" p:placeholder="Largo (Mts)"
+                                                     value="#{newInfraestructure.largo}"></h:inputText>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="">
+                                        <h:commandButton  class="btn btn-primary" actionListener="#{newInfraestructure.insertInfra}" value="Guardar" style="margin-top: 0px;" >                 
+                                        </h:commandButton>
+                                        <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cultura -->
+                <div class="modal fade" id="addCu" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close"
+                                        data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Ingrese Nueva Cultura</h4>
+                            </div>
+                            <h:form enctype="multipart/form-data" id="formCul">
+                                <div class="modal-body">
+                                    <div>
+                                        <div class="col-md-6">
+                                            <h:graphicImage class="img-rounded" library="plugins/images" name="image.png" width="110px" height="100px" id="imgSalidaCul"/>
+                                            <div> 
+                                                <button class="btn btn-default" id="cargarCul" type="button">
+                                                    <i class=" fa fa-photo"></i>
+                                                </button>
+                                                <button class="btn btn-default" id="eliminarCul" type="button">
+                                                    <i class=" fa fa-remove"></i>
+                                                </button>
+                                                <h:inputFile id="file-inputCul" style="display: none" value="#{newCulture.image}" required="true" requiredMessage="Imagen no Seleccionada!">
+                                                     <f:validator validatorId="FileUploadValidator" />
+                                                </h:inputFile>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" style="height: 140px;">
+                                            <label for="campusCul">Campus: </label>
+                                            <h:selectOneMenu id="campusCul" class="form-control" value="#{newCulture.campus}">
+                                                <f:selectItem id="item1_cul" itemLabel="UES FMOCC" itemValue="1" />                                      
+                                            </h:selectOneMenu>
+                                        </div>
+
+                                    </div>
+                                    <div style="padding-top: 10px;">
+                                        <label for="anexo">Anexar Archivo: </label>
+                                        <h:inputFile id="anexo" value="#{newCulture.file}" class="form-control" required="true" requiredMessage="Archivo no Seleccionado!"/>
+                                    </div>
+                                    <div>
+                                        <label for="nombreCultura">Evento Cultural: </label>
+                                        <h:inputText id="nombreCultura" value="#{newCulture.nombre}" class="form-control" p:placeholder="Evento Cultural" required="true" requiredMessage="Nombre de Evento Cultural es Obligatorio!">
+                                            <pi:ajax update="msgNameCul" event="keyup" />
+                                        </h:inputText>
+                                        <pi:messages for="nombreCultura" id="msgNameCul" closable="true"/>
+                                    </div>
+
+                                    <div>
+                                        <label for="desCul">Descripci&oacute;n de Cultura: </label>
+                                        <h:inputTextarea id="desCul" value="#{newCulture.descripcion}" class="form-control" p:placeholder="Descripci&oacute;n"
+                                                         rows="8">
+                                        </h:inputTextarea>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="">
+                                        <h:commandButton  class="btn btn-primary" actionListener="#{newCulture.insertCulture()}" value="Guardar" style="margin-top: 0px;">                 
+                                        </h:commandButton>
+                                        <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Planes -->
+                <div class="modal fade" id="addPlan" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close"
+                                        data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Ingrese Nuevo Plan de Estudio</h4>
+                            </div>
+                            <h:form enctype="multipart/form-data" id="formPlan">
+                                <div class="modal-body">
+                                    <div>
+                                        <div class="col-md-6">
+                                            <h:graphicImage class="img-rounded" library="plugins/images" name="image.png" width="110px" height="100px" id="imgSalidaPlan"/>
+                                            <div> 
+                                                <button class="btn btn-default" id="cargarPlan" type="button">
+                                                    <i class=" fa fa-photo"></i>
+                                                </button>
+                                                <button class="btn btn-default" id="eliminarPlan" type="button">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                                <h:inputFile id="file-inputPlan" style="display: none" value="#{newPlan.image}" required="true" requiredMessage="Imagen no Seleccionada!">
+                                                 <f:validator validatorId="FileUploadValidator" />
+                                                </h:inputFile>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5" style="height: 140px;">
+                                            <label for="campusCul">Campus: </label>
+                                            <h:selectOneMenu id="campusPlan" class="form-control" value="#{newPlan.campus}">
+                                                <f:selectItem id="item1_Plan" itemLabel="UES FMOCC" itemValue="1" />                                      
+                                            </h:selectOneMenu>
+                                        </div>
+
+                                    </div>
+                                    <div style="padding-top: 10px;">
+                                        <label for="anexo">Anexar Archivo: </label>
+                                        <h:inputFile id="anexo" value="#{newPlan.file}" class="form-control" required="true" requiredMessage="Archivo no Seleccionado!"/>
+                                    </div>
+                                    <div>
+                                        <label for="nombrePlan">Nombre: </label>
+                                        <h:inputText id="nombrePlan" value="#{newPlan.nombre}" class="form-control" p:placeholder="Nombre Plan de Estudio" required="true" requiredMessage="Nombre de Plan de Estudio es Obligatorio!">
+                                            <pi:ajax update="msgNamePlan" event="keyup" />
+                                        </h:inputText>
+                                        <pi:messages for="nombrePlan" id="msgNamePlan" closable="true"/>
+                                    </div>
+
+                                    <div>
+                                        <label for="desCul">Descripci&oacute;n: </label>
+                                        <h:inputTextarea id="desPlan" value="#{newPlan.descripcion}" class="form-control" p:placeholder="Descripci&oacute;n"
+                                                         rows="8">
+                                        </h:inputTextarea>
+                                    </div>
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="">
+                                        <h:commandButton  class="btn btn-primary" actionListener="#{newPlan.insertPlan()}" value="Guardar" style="margin-top: 0px;">                 
+                                        </h:commandButton>
+                                        <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Maestrias-->
+                <div class="modal fade" id="addMa" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close"
+                                        data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Ingrese Nueva Maestria</h4>
+                            </div>
+                            <h:form enctype="multipart/form-data" id="formMa">
+                                <div class="modal-body">
+                                    <div>
+                                        <div class="col-md-6">
+                                            <h:graphicImage class="img-rounded" library="plugins/images" name="image.png" width="110px" height="100px" id="imgSalidaMa"/>
+                                            <div> 
+                                                <button class="btn btn-default" id="cargarMa" type="button">
+                                                    <i class=" fa fa-photo"></i>
+                                                </button>
+                                                <button class="btn btn-default" id="eliminarMa" type="button">
+                                                    <i class=" fa fa-remove"></i>
+                                                </button>
+                                                <h:inputFile id="file-inputMa" style="display: none" value="#{newMaster.image}" required="true" requiredMessage="Imagen no Seleccionada!">
+                                                     <f:validator validatorId="FileUploadValidator" />
+                                                </h:inputFile>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" style="height: 140px;">
+                                            <label for="campusMa">Campus: </label>
+                                            <h:selectOneMenu id="campusMa" class="form-control" value="#{newMaster.campus}">
+                                                <f:selectItem id="item1_Ma" itemLabel="UES FMOCC" itemValue="1" />                                      
+                                            </h:selectOneMenu>
+                                        </div>
+
+                                    </div>
+
+                                    <div style="padding-top: 20px;">
+                                        <br></br><br></br><br></br><br></br><br></br><br></br>
+                                        <div style="padding-top: 10px;">
+                                            <label for="anexo">Anexar Archivo: </label>
+                                            <h:inputFile id="anexo" value="#{newMaster.file}" class="form-control" required="true" requiredMessage="Archivo no Seleccionado!"/>
+                                        </div>
+                                        <label for="nombreMa">Nombre: </label>
+                                        <h:inputText id="nombrMa" value="#{newMaster.nombre}" class="form-control" p:placeholder="Nombre de Maestria" required="true" requiredMessage="Nombre de Maestría es Obligatorio!">
+                                            <pi:ajax update="msgNameMa" event="keyup" />
+                                        </h:inputText>
+                                        <pi:messages for="nombrMa" id="msgNameMa" closable="true"/>
+                                        <label for="planMa">Aprobada: </label>
+                                        <h:inputText id="aprovedMa" value="#{newMaster.aproved}" class="form-control" p:placeholder="Acuerdo de Aprobaci&oacute;n"></h:inputText>
+                                        <label for="planMa">Plan de Estudio: </label>
+                                        <h:inputText id="planMa" value="#{newMaster.plan}" class="form-control" p:placeholder="Plan de Estudio"></h:inputText>
+                                    </div>
+
+                                    <div>
+                                        <label for="desMa">Descripci&oacute;n de Maestr&iacute;a: </label>
+                                        <h:inputTextarea id="desMa" value="#{newMaster.descripcion}" class="form-control" p:placeholder="Descripci&oacute;n"
+                                                         rows="5">
+                                        </h:inputTextarea>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="">
+                                        <h:commandButton  class="btn btn-primary" actionListener="#{newMaster.insertMaster()}" value="Guardar" style="margin-top: 0px;">                 
+                                        </h:commandButton>
+                                        <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Oferta -->
+                <div class="modal fade" id="addOfer" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close"
+                                        data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Ingrese Nueva Oferta Académica</h4>
+                            </div>
+                            <h:form enctype="multipart/form-data" id="formOfer">
+                                <div class="modal-body">
+                                    <div>
+                                        <div class="col-md-6">
+                                            <h:graphicImage class="img-rounded" library="plugins/images" name="image.png" width="110px" height="100px" id="imgSalidaOfer"/>
+                                            <div> 
+                                                <button class="btn btn-default" id="cargarOfer" type="button">
+                                                    <i class="fa fa-photo"></i>
+                                                </button>
+                                                <button class="btn btn-default" id="eliminarOfer" type="button">
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
+                                                <h:inputFile id="file-inputOfer" style="display: none" value="#{newOffer.image}" required="true" requiredMessage="Imagen no Seleccionada!">
+                                                    <f:validator validatorId="FileUploadValidator" />
+                                                </h:inputFile>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" style="height: 140px;">
+                                            <label for="campus">Campus: </label>
+                                            <h:selectOneMenu id="campus" class="form-control" value="#{newOffer.campus}">
+                                                <f:selectItem id="item1" itemLabel="UES FMOCC" itemValue="1" />                                      
+                                            </h:selectOneMenu>
+                                        </div>
+
+                                    </div>
+
+                                    <div style="padding-top: 20px;">
+                                        <label for="anexoOfer">Anexar Archivo: </label>
+                                        <h:inputFile id="anexoOfer" value="#{newOffer.file}" class="form-control" required="true" requiredMessage="Archivo no Seleccionado!"/>
+                                    </div>
+                                    <div>
+                                        <label for="nombreOfer">Nombre: </label>
+                                        <h:inputText id="nombreOfer" value="#{newOffer.nombre}" class="form-control" p:placeholder="Nombre de Oferta Académica" required="true" requiredMessage="Nombre de Oferta Académica es Obligatorio!">
+                                            <pi:ajax update="msgNameOfer" event="keyup" />
+                                        </h:inputText>
+                                        <pi:messages for="nombreOfer" id="msgNameOfer" closable="true"/>
+                                    </div>
+
+                                    <div>
+                                        <label for="ModeOfer">Modalidad: </label>
+                                        <h:inputText id="ModeOfer" value="#{newOffer.mode}" class="form-control" p:placeholder="Modalidad"></h:inputText>
+                                    </div>
+
+                                    <div>
+                                        <label for="areaOfer">&Aacute;rea: </label>
+                                        <h:selectOneMenu id="areaOfer" class="form-control" value="#{newOffer.area}">
+                                            <f:selectItem id="itemMed" itemLabel="Departamento de Medicina" itemValue="Departamento de Medicina" />   
+                                            <f:selectItem id="itemJur" itemLabel="Departamento de Ciencias Jur&iacute;dicas" itemValue="Departamento de Ciencias Jur&iacute;dicas" />  
+                                            <f:selectItem id="itemSoc" itemLabel="Departamento de Ciencias Sociales, Filosofia y Letras" itemValue="Departamento de Ciencias Sociales, Filosofia y Letras" />  
+                                            <f:selectItem id="itemIdi" itemLabel="Departamento de Idiomas" itemValue="Departamento de Idiomas" />  
+                                            <f:selectItem id="itemIng" itemLabel="Departamento de Ingenier&iacute;a" itemValue="Departamento de Ingenier&iacute;a" />
+                                            <f:selectItem id="itemEcono" itemLabel="Departamento de Ciencias Econ&oacute;micas" itemValue="Departamento de Ciencias Econ&oacute;micas" />
+                                            <f:selectItem id="itemQu" itemLabel="Departamento de Qu&iacute;mica" itemValue="Departamento de Qu&iacute;mica" />
+                                            <f:selectItem id="itemBio" itemLabel="Departamento de Biolog&iacute;a" itemValue="Departamento de Biolog&iacute;a" />
+                                            <f:selectItem id="itemFisica" itemLabel="Departamento de Fisica" itemValue="Departamento de Fisica" />
+                                            <f:selectItem id="itemMat" itemLabel="Departamento de Matem&aacute;tica" itemValue="Departamento de Matem&aacute;tica" />
+                                        </h:selectOneMenu>
+                                    </div>
+
+                                    <div>
+                                        <label for="clicloOfer">Ciclos: </label>
+                                        <h:inputText id="clicloOfer" value="#{newOffer.ciclos}" class="form-control" p:placeholder="Número de Ciclos"></h:inputText>
+                                    </div>
+
+                                    <div>
+                                        <label for="planOfer">Plan de Estudio: </label>
+                                        <h:inputText id="planOfer" value="#{newOffer.plan}" class="form-control" p:placeholder="Plan de Estudio"></h:inputText>
+                                    </div>
+                                    <div>
+                                        <label for="reqOfer">Requisitos: </label>
+                                        <h:inputTextarea id="reqOfer" value="#{newOffer.requerimientos}" class="form-control" p:placeholder="Requisitos"
+                                                         rows="3">
+                                        </h:inputTextarea>
+                                    </div>
+                                    <div>
+                                        <label for="desOfer">Descripci&oacute;n: </label>
+                                        <h:inputTextarea id="desOfer" value="#{newOffer.descripcion}" class="form-control" p:placeholder="Descripci&oacute;n"
+                                                         rows="3">
+                                        </h:inputTextarea>
+                                    </div>
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="">
+                                        <h:commandButton  class="btn btn-primary" actionListener="#{newOffer.saveOffer()}" value="Guardar" style="margin-top: 0px;">                 
+                                        </h:commandButton>
+                                        <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+                <hr></hr>
+
+                <footer>
+                    <p>© Universidad de El Salvador 2014</p>
+                </footer>
+
+            </div>
+
+
+        </section>
+
+    </h:body>
+</html>
+

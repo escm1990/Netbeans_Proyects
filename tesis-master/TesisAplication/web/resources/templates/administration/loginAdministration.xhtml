@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/plugins/images/slider/logo.gif"/>
+        <title>Login</title>
+        <h:outputScript name="jquery-1.11.1.min.js" library="jquery" target="body" />  
+        <h:outputStylesheet name="bootstrap.css" library="bootstrap/css" />
+        <f:loadBundle basename="com.tesis.properties.messages" var="msg"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="row" style="margin-top: 100px;">
+                <div class="col-md-9 col-md-offset-4 centered">
+                    <div class="col-md-5"  align="center">
+                        <div class="panel panel-primary" align="center">
+                            <div class="panel-heading">
+                                <span><i></i></span>
+                                <h4>Ingrese sus credenciales</h4>
+                            </div>
+                            <h:form id="login">
+                                <p:messages id="msgs" closable="true"/>
+                                <div class="panel-body" align="center">
+                                    <div>
+                                        <h:graphicImage  library="plugins/images/slider" name="logo.gif" width="80px" height="80px"></h:graphicImage>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user" value="Usuario:" >Usuario:</label>
+                                        <h:inputText class="form-control" id="user" value="#{login.usuario}" pt:placeholder="Usuario" required="true" requiredMessage="Usuario Obligatorio"/>
+                            
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pass" value="Contrase&ntilde;a:" >Contrase&ntilde;a:</label>
+                                        <h:inputSecret class="form-control" pt:placeholder="Contrase&ntilde;a" value="#{login.contrasenia}" id="pass" required="true" requiredMessage="Contraseña Obligatoria"/>
+                                    </div>
+
+                                </div>
+                                <div class="panel-footer">
+                                    <p><h:commandButton class="btn btn-primary" action="#{login.dashboardAdministration()}" value="Entrar"></h:commandButton></p>
+                                </div>
+                            </h:form>
+                        </div>
+
+                    </div> 
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </h:body>
+</html>
+

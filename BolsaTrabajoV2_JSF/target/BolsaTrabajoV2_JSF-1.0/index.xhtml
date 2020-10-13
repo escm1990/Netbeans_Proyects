@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Hola mundo en JSF</title>
+    </h:head>
+    <h:body>
+        <h:form> 
+            
+            <h:messages globalOnly="true"/>
+            
+            <table>
+                <tr>
+                    <td><h:outputLabel for="nombre" value="Nombre:" /></td>
+                    <td><h:inputText id="nombre" required="true" value="#{candidato.nombre}"/></td>
+                    <td><h:message for="nombre"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel for="apellido" value="Apellido:" /></td>
+                    <td><h:inputText id="apellido" required="true" value="#{candidato.apellido}"/></td>
+                    <td><h:message for="apellido"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel for="salarioDeseado" value="Salario Deseado:" /></td>
+                    <td>
+                        <h:inputText id="salarioDeseado" required="true" value="#{candidato.salarioDeseado}">
+                            <f:validateLongRange minimum="500" maximum="5000"/>
+                        </h:inputText>
+                    </td>
+                    <td><h:message for="salarioDeseado"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel for="fechaNacimiento" value="Fecha Nacimiento:" /></td>
+                    <td>
+                        <h:inputText id="fechaNacimiento" required="true" value="#{candidato.fechaNacimiento}">
+                            <f:convertDateTime parent="dd/MM/yyyy"/>
+                        </h:inputText>
+                    </td>
+                    <td><h:message for="fechaNacimiento"/></td>
+                </tr>
+            </table>
+            
+            <h:commandButton action="#{vacanteForm.redirigirNavegacion}" value="Enviar"/>
+            
+        </h:form>
+    </h:body>
+</html>
+

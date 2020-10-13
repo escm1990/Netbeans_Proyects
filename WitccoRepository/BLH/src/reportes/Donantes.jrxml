@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<parameter name="banner" class="java.lang.String"/>
+	<parameter name="par" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Select * from Persona where Documento=$P{par}]]>
+	</queryString>
+	<field name="Documento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Nombres" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Apellidos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FechaNac" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Peso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Estatura" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SemGesta" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FechaParto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vdrl" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hbsag" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hiv" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TransSangui" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Tabaquismo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Etilismo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="AptaDonar" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FechaObtDatos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image hAlign="Center">
+				<reportElement x="0" y="0" width="556" height="79"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{banner}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="168" y="0" width="238" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Listado de Donantes]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="242" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="241" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement x="444" y="236" width="85" height="1"/>
+			</line>
+			<line>
+				<reportElement x="444" y="218" width="85" height="1"/>
+			</line>
+			<line>
+				<reportElement x="234" y="236" width="64" height="1"/>
+			</line>
+			<line>
+				<reportElement x="234" y="218" width="64" height="1"/>
+			</line>
+			<line>
+				<reportElement x="68" y="237" width="64" height="1"/>
+			</line>
+			<line>
+				<reportElement x="68" y="217" width="64" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="444" y="218" width="85" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Etilismo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="218" width="64" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{hbsag}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="355" y="218" width="89" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Etilismo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="218" width="66" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CMV:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="218" width="66" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HSbAg:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="355" y="186" width="200" height="1"/>
+			</line>
+			<line>
+				<reportElement x="145" y="185" width="95" height="1"/>
+			</line>
+			<line>
+				<reportElement x="460" y="82" width="95" height="1"/>
+			</line>
+			<line>
+				<reportElement x="211" y="81" width="41" height="1"/>
+			</line>
+			<line>
+				<reportElement x="68" y="80" width="51" height="1"/>
+			</line>
+			<line>
+				<reportElement x="132" y="60" width="223" height="1"/>
+			</line>
+			<line>
+				<reportElement x="84" y="40" width="348" height="1"/>
+			</line>
+			<line>
+				<reportElement x="432" y="22" width="123" height="1"/>
+			</line>
+			<line>
+				<reportElement x="82" y="21" width="152" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="444" y="198" width="85" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Tabaquismo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="234" y="198" width="61" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{hiv}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="66" y="198" width="66" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{vdrl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="166" width="200" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FechaParto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="145" y="166" width="89" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{SemGesta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="63" width="95" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{AptaDonar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="63" width="41" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Peso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="63" width="51" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Estatura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="432" y="4" width="123" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FechaObtDatos}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="66" y="92" width="489" height="63"/>
+			</rectangle>
+			<textField>
+				<reportElement x="188" y="23" width="198" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Apellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="82" y="23" width="106" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="82" y="4" width="152" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Documento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="355" y="62" width="105" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apta para donar:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="252" y="2" width="180" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Obtención de Datos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="198" width="89" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tabaquismo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="198" width="66" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HIV:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="198" width="66" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VDRL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="252" y="166" width="103" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha del Parto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="2" width="82" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documento:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="66" y="91" width="489" height="64"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="166" width="145" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Semanas de Gestación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="66" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="252" y="63" width="43" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[lbs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="119" y="61" width="26" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[cm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="63" width="43" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peso:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="61" width="66" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estatura:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="42" width="132" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Nacimiento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="21" width="82" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="132" y="43" width="223" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FechaNac}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

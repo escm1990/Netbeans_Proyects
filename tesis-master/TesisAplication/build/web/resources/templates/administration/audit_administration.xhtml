@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pi="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/plugins/images/slider/logo.gif"/>
+        <h:outputScript name="bootstrap.min.js" library="bootstrap/js" target="body" />     
+        <h:outputStylesheet name="bootstrap.css" library="bootstrap/css" /> 
+        <h:outputStylesheet name="styleTables.css" library="plugins/css" /> 
+        <f:loadBundle basename="com.tesis.properties.messages" var="msg"/>
+        <h:outputStylesheet name="font-awesome.css" library="bootstrap/font-awesome/css" />
+
+        <h:outputStylesheet name="bootstrap.min.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="main.css" library="plugins/css/theme" />
+    </h:head>
+    <h:body>
+        <ui:include src="headerAdministration.xhtml" />
+
+        <section>
+            <div class="container">
+
+                <div class="row row-offcanvas row-offcanvas-right">
+                    <div class="jumbotron">
+                        <h2>Auditoria!</h2>
+                        <p>Lista de eventos realizados</p>
+                    </div>
+                    <p:messages id="mensaje" closable="true"></p:messages>
+                    <div>
+                        <div class="row">
+
+                            <div class="col-md-9" >
+                            </div>                              
+                            <div class="col-md-1" style="bottom: 12px;">
+                                <button  class="btn btn-primary" id="search" data-toggle="modal" data-target="#searchAudit">
+                                    <i class="fa fa-search fa-1x"></i>
+                                </button>
+                            </div>
+                            <div class="col-md-1" style="bottom: 12px;">
+                                <h:form>
+                                    <h:commandLink action="#{audit_administration.verAll()}" class="btn btn-primary">
+                                        <i class="fa fa-eraser "></i>&nbsp; <h:outputText value="Ver Todos" />
+                                    </h:commandLink>
+                                </h:form>
+                            </div>
+
+                        </div>
+
+                        <div class="">
+                            <h:form>
+                                <h4>Exportar Datos</h4>
+                                <h:commandLink>
+                                    <p:graphicImage name="excel213.png" library="plugins/images" class="btn btn-default"/>
+                                    <p:dataExporter type="xls" target="list_log" fileName="list_log"/>
+                                </h:commandLink>
+
+                                <h:commandLink>
+                                    <p:graphicImage name="adobe2013.png" library="plugins/images" class="btn btn-default"/>
+                                    <p:dataExporter type="pdf" target="list_log" fileName="list_log"/>
+                                </h:commandLink>
+
+
+
+                                <p:dataTable value="#{audit_administration.logs}" var="row" class="table table-hover" id="list_log" 
+                                             emptyMessage="No se encontraron registros..." rows="10"
+                                             paginator="true" paginatorPosition="bottom"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                             rowsPerPageTemplate="10"
+                                             rowKey="#{row.codTesisLog}"
+                                             widgetVar= "audit_list"
+                                             >
+
+                                    <p:column class="info" styleClass="tableHeader">
+                                        <f:facet name="header">
+                                            <h:outputText value="Nombre de Log" style="margin-left: 12px;"/>
+                                        </f:facet>
+                                        <h:outputText value="#{row.idLog}"/>
+                                    </p:column>
+                                    <p:column styleClass="tableHeader">
+                                        <f:facet name="header">
+                                            <h:outputText value="Descripción"/>
+                                        </f:facet>
+                                        <h:outputText value="#{row.logDescription}"/>
+                                    </p:column>
+                                    <p:column styleClass="tableHeader">
+                                        <f:facet name="header">
+                                            <h:outputText value="Creado por"/>
+                                        </f:facet>
+                                        <h:outputText value="#{row.createdBy}"/>
+                                    </p:column>
+                                    <p:column styleClass="tableHeader">
+                                        <f:facet name="header">
+                                            <h:outputText value="Creación"/>
+                                        </f:facet>
+                                        <h:outputText value="#{row.createdDate.date}-#{row.createdDate.month+1}-#{row.createdDate.year+1900} #{row.createdDate.hours}:#{row.createdDate.minutes}:#{row.createdDate.seconds}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div>
+                    <h:link class="btn btn-primary" outcome="#{admin_controller.dashBoard}" value="Regresar"></h:link>
+                </div>
+
+
+                <!-- Cultura -->
+                <div class="modal fade" id="searchAudit" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close"
+                                        data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Busqueda Personalizada</h4>
+                            </div>
+                            <h:form id="formSearch">
+                                <div class="modal-body">
+
+                                    <div class="form-group">
+                                        <label for="desde" style="margin-right: 35px;">Desde: </label>
+                                        <p:calendar showOn="button"  id="desde" value="#{audit_administration.from}" pattern="yyyy-MM-dd HH:mm:ss" required="true" requiredMessage="El campo Desde es requerido"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="hasta" style="margin-right: 35px;">Hasta: </label>
+                                        <p:calendar showOn="button" id="hasta" value="#{audit_administration.to}" pattern="yyyy-MM-dd HH:mm:ss" required="true" requiredMessage="El campo Hasta es requerido"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user" style="margin-right: 20px;">Usuario: </label>
+                                        <p:inputText id="user" value="#{audit_administration.user}"/>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="">
+                                        <h:commandButton  class="btn btn-primary" actionListener="#{audit_administration.busqueda()}" value="Buscar" style="margin-top: 0px;">                 
+                                        </h:commandButton>
+                                        <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </section>
+    </h:body>
+</html>
+

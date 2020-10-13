@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pi="http://primefaces.org/ui"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/plugins/images/slider/logo.gif"/>
+        <title>Maestrías UES FMOCC</title>
+        <h:outputScript name="jquery-1.11.1.min.js" library="jquery" target="body"/>
+        <h:outputScript name="bootstrap.min.js" library="bootstrap/js" target="body" />
+        <h:outputStylesheet name="styleTablesClients.css" library="plugins/css" /> 
+
+        <h:outputStylesheet name="maestrias.css" library="bootstrap/css/personalizados" />
+        <h:outputStylesheet name="bootstrap.css" library="bootstrap/css" />
+        <h:outputStylesheet name="main.css" library="plugins/css/theme" />
+
+        <f:loadBundle basename="com.tesis.properties.messages" var="msg"/>
+        <h:outputStylesheet name="font-awesome.css" library="bootstrap/font-awesome/css" />
+    </h:head>
+
+    <h:body>
+        <ui:include src="headerPages.xhtml" />
+        <br> </br>
+        <br> </br>
+        <ui:include src="headerMaestrias.xhtml" />
+        <!-- Tab panes -->
+        <div class="tab-content" >
+            <div class="tab-pane fade in active" id="maestrias">
+                <div class="container">
+                    <div class="panel-body">
+                        <section>
+                            <div class="">
+
+                                <div class="row row-offcanvas row-offcanvas-right">
+
+                                    <div class="col-xs-12 col-sm-15">
+                                        <p class="pull-right visible-xs">
+                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+                                        </p>
+
+                                        <div class="jumbotron">
+                                            <h1><i class="fa fa-bookmark-o"></i>&nbsp;Maestr&iacute;as UES!</h1>
+                                            <h3>Por favor selecciona la maestr&iacute;a que deseas ver!</h3>
+                                        </div>
+                                        <pi:messages closable="true"></pi:messages>
+                                    </div><!--/span-->
+
+
+                                </div><!--/row-->
+
+                                <!--Listado de maestrias-->
+                                <div id="menu" class="container" style="height: 300px;">
+
+                                    #{msg['maestrias.descripcion1']}
+                                    <br></br>
+                                    <br></br>
+                                    #{msg['maestrias.descripcion2']}
+                                    <br></br>
+                                    <br></br>
+                                    #{msg['maestrias.descripcion3']}
+
+
+                                </div>
+                            </div>
+                        </section>
+
+                        <hr></hr>
+                    </div>                    
+                </div> 
+            </div>
+            <div class="tab-pane fade container" id="settings">
+                <div class="">
+                    <div class="panel-body">
+                        <button class="btn btn-link" data-toggle="modal" data-target=".bs-example-modal-lg6">#{msg['maestrias.faq1']}</button>
+                        <br></br>
+                        <button class="btn btn-link" data-toggle="modal" data-target=".bs-example-modal-lg7">#{msg['maestrias.faq2']}</button>                 
+                        <br></br>
+                        <button class="btn btn-link" data-toggle="modal" data-target=".bs-example-modal-lg8">#{msg['maestrias.faq3']}</button>
+                        <br></br>
+                        <button class="btn btn-link" data-toggle="modal" data-target=".bs-example-modal-lg9">#{msg['maestrias.faq4']}</button>
+                        <br></br>
+                        <button class="btn btn-link" data-toggle="modal" data-target=".bs-example-modal-lg10">#{msg['maestrias.faq5']}</button>
+                        <br></br>
+                        <button class="btn btn-link" data-toggle="modal" data-target=".bs-example-modal-lg11">#{msg['maestrias.faq6']}</button>
+                    </div>                    
+                </div>                 
+            </div>
+
+
+        </div>
+
+
+
+
+        <!-- FAQ Respuesta 1 -->
+
+        <div class="modal fade bs-example-modal-lg6" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                                data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">#{msg['maestrias.faq1']}</h3>
+                    </div>
+                    <div class="panel-body">
+                        #{msg['maestrias.resp1']}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Respuesta 2 -->
+        <div class="modal fade bs-example-modal-lg7" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                                data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">#{msg['maestrias.faq2']}</h3>
+                    </div>
+                    <div class="panel-body">
+                        #{msg['maestrias.resp2']}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- FAQ Respuesta 3 -->
+        <div class="modal fade bs-example-modal-lg8" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                                data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">#{msg['maestrias.faq3']}</h3>
+                    </div>
+                    <div class="panel-body">
+                        #{msg['maestrias.resp3']}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Respuesta 4 -->
+        <div class="modal fade bs-example-modal-lg9" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                                data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">#{msg['maestrias.faq4']}</h3>
+                    </div>
+                    <div class="panel-body">
+                        #{msg['maestrias.resp4']}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Respuesta 5 -->
+        <div class="modal fade bs-example-modal-lg10" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                                data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">#{msg['maestrias.faq5']}</h3>
+                    </div>
+                    <div class="panel-body">
+                        #{msg['maestrias.resp5']}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Respuesta 6 -->
+        <div class="modal fade bs-example-modal-lg11" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                                data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">#{msg['maestrias.faq6']}</h3>
+                    </div>
+                    <div class="panel-body">
+                        #{msg['maestrias.resp6']}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Respuesta 7 -->
+        <div class="modal fade bs-example-modal-lg12" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                                data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">#{msg['maestrias.faq7']}</h3>
+                    </div>
+                    <div class="panel-body">
+                        #{msg['maestrias.resp7']}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="background-color: #FFFFFF">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <div class="row">
+                    <h:form>
+                        <div class="col-md-5" >
+                        </div>                         
+                        <div class="col-md-4">
+                            <h2><h:inputText  class="form-control"  p:placeholder="Nombre de Maestr&iacute;a" value="#{mas_client.criterio}"/></h2>
+                        </div>
+                        <div class="col-md-1" style="margin-top: 6px;">
+                            <h:commandLink action="#{mas_client.busqueda()}" class="btn btn-primary">
+                                <i class="fa fa-search fa-1x"></i>
+                            </h:commandLink>
+
+                        </div>
+                        <div class="col-md-1" style="margin-top: 6px;">
+                            <h:commandLink action="#{mas_client.busqueda()}" class="btn btn-primary">
+                                <i class="fa fa-eraser "></i>&nbsp; <h:outputText value="Ver Todos" />
+                            </h:commandLink>
+                        </div>
+                    </h:form>
+                </div>
+                <div class="col-md-12">
+                    <h:form>
+                        <pi:dataTable value="#{mas_client.list}" var="item" class="table table-hover" id="list_user" style="padding: 0px 0px; border: 1px solid #FFFFFF;" 
+                                      emptyMessage="No se encontraron resultados..." rows="6"
+                                      paginator="true" paginatorPosition="bottom"
+                                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                      rowsPerPageTemplate="6"
+                                      rowKey="#{item.codTesisMasters}"                                       
+                                      >
+
+                            <pi:column class="info" styleClass="tableHeader" style="padding: 0px 0px; border: 1px solid #FFFFFF;">
+                                <div class="panel panel-success media-body">
+
+                                    <div class="col-md-8" style="margin-right: 35px;">
+                                        <h2><h:outputText value="#{item.maestriaName}"/></h2>
+                                        <p style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;"><h:outputText style="font-weight: bold" value="Descripci&oacute;n: "></h:outputText><h:outputText value="#{item.maestriaDescripcion}"/></p>
+                                        <p style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;"><h:outputText style="font-weight: bold" value="Actualización: "></h:outputText> <h:outputText value="#{item.updateDate.year+1900}-#{item.updateDate.month+1}-#{item.updateDate.date} #{item.updateDate.hours}:#{item.updateDate.minutes}:#{item.updateDate.seconds}"/></p>
+
+                                        <p style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;"> 
+                                            <h:commandLink class="btn btn-primary" action="#{mas_client.submit()}" value="Ver detalle »" style="color: #FFFFFF;">
+                                                <f:setPropertyActionListener target="#{mas_client.item}" value="#{item}" /> 
+                                            </h:commandLink></p>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h:graphicImage class="img-rounded" library="#{item.fkTesisSystemImages.imageUri}" name="#{item.fkTesisSystemImages.imageDescription}" width="290px" height="200px"></h:graphicImage>    
+                                    </div>
+
+
+                                </div>
+                            </pi:column>
+
+                        </pi:dataTable>
+                    </h:form> 
+
+
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© Universidad de El Salvador 2014</p>
+        </footer>
+
+
+    </h:body>
+</html>
+

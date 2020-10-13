@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/plugins/images/slider/logo.gif"/>
+        <title>DashBoard Administraci&oacute;n</title>
+        <h:outputScript name="bootstrap.min.js" library="bootstrap/js" target="body" />
+        <h:outputStylesheet name="bootstrap.css" library="bootstrap/css" />
+        <h:outputStylesheet name="styleTables.css" library="plugins/css" /> 
+        <h:outputStylesheet name="font-awesome.css" library="bootstrap/font-awesome/css" />
+        <h:outputStylesheet name="bootstrap.min.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="main.css" library="plugins/css/theme" />
+        <f:loadBundle basename="com.tesis.properties.messages" var="msg"/>
+    </h:head>
+    <h:body>
+        <ui:include src="headerAdministration.xhtml" />
+        <section>
+            <div class="container">
+
+                <div class="row row-offcanvas row-offcanvas-right">
+
+                    <div class="jumbotron">
+                        <h2>Administraci&oacute;n de Sistema!</h2>
+                        <p>Resultado de Consulta.</p>
+                    </div>
+                    <p:messages id="msj"></p:messages>
+
+                    <div class="row">
+
+                        <div class="col-md-5">
+                            <p:chart type="bar" model="#{downloadChart.barModel}" style="width:700px;height:450px" widgetVar="chart"/>    
+                        </div>
+
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <h:form>
+                                <p:dataTable value="#{downloadChart.list}" var="row" class="table table-hover" id="list_downloads"
+                                             emptyMessage="No se encontraron registros..." rows="10"
+                                             paginator="true" paginatorPosition="bottom"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                             rowsPerPageTemplate="10"
+                                             widgetVar="list_downloads"
+                                             >
+                                    <p:column class="info" styleClass="tableHeader">
+                                        <f:facet name="header">
+                                            <h:outputText value="M&oacute;dulo" style="margin-left: 12px;"/>
+                                        </f:facet>
+                                        <h:outputText value="#{row.description}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="tableHeader">
+                                        <f:facet name="header">
+                                            <h:outputText value="N&uacute;mero de Descargas"/>
+                                        </f:facet>
+                                        <h:outputText value="#{row.value}"/>
+                                    </p:column>
+                                </p:dataTable>
+                                <div class="">
+                                    <p:commandButton type="button" value="Exportar Gr&aacute;fico como Imagen" icon="ui-icon-extlink" class="btn btn-success" onclick="exportChart()"/>
+                                    <h4>Exportar Datos</h4>
+                                    
+                                    <h:commandLink>
+                                        <p:graphicImage name="excel213.png" library="plugins/images" class="btn btn-default"/>
+                                        <p:dataExporter type="xls" target="list_downloads" fileName="list_downloads" />
+                                    </h:commandLink>
+
+                                    <h:commandLink>
+                                        <p:graphicImage name="adobe2013.png" library="plugins/images" class="btn btn-default"/>
+                                        <p:dataExporter type="pdf" target="list_downloads" fileName="list_downloads" />
+                                    </h:commandLink>
+                                </div>
+                            </h:form>
+
+                        </div>
+
+                    </div>
+                    <p:dialog widgetVar="dlg" showEffect="fade" modal="true" header="Gráfico Exportado" resizable="false">
+                        <p:outputPanel id="output" layout="block" style="width:850px;height:550px"/>
+                    </p:dialog>
+
+
+                </div>
+                <div>
+                    <h:link class="btn btn-primary" outcome="download_chart" value="Regresar"></h:link>
+                </div>
+
+                <hr></hr>
+
+                <footer>
+                    <p>© Universidad de El Salvador 2014</p>
+                </footer>
+
+            </div>
+        </section>
+
+
+        <script type="text/javascript">
+            function exportChart() {
+
+                $('#output').empty().append(PF('chart').exportAsImage());
+                PF('dlg').show();
+            }
+        </script>
+    </h:body>
+</html>
+

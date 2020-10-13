@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<parameter name="cod" class="java.lang.String"/>
+	<parameter name="rutaImagen" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT *
+FROM parcial p, opcion_multiple om
+WHERE p.cod_parcial = om.cod_parcial AND p.cod_parcial = $P{cod}]]>
+	</queryString>
+	<field name="cod_parcial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_parcial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_parcial" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="materia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="grupo_teorico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="departamento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_docente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_opcionM" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="preguntaO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="respuesta1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="respuesta2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="respuesta3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="respuesta4" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="respuesta5" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numPregunta" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="260" splitType="Stretch">
+			<staticText>
+				<reportElement x="121" y="65" width="102" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Departamento:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="76" y="213" width="379" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="121" y="85" width="63" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Materia:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="149" width="28" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="149" width="116" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Examen Parcial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="149" width="58" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="105" width="71" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Docente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="193" width="63" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Alumno:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="12" width="229" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD DE EL SALVADOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="34" width="338" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FACULTAD MULTIDISCIPLINARIA DE OCCIDENTE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="13" y="147" width="94" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre_parcial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="149" width="74" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fecha_parcial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="85" width="354" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{materia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="149" width="35" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{grupo_teorico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="226" y="65" width="312" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{departamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="105" width="346" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre_docente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="44" y="229" width="466" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Indicaciones: subraye o encierre en un círculo la respuesta correcta.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="457" y="195" width="43" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nota:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="500" y="214" width="55" height="1"/>
+			</line>
+			<image>
+				<reportElement x="15" y="18" width="92" height="107"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{rutaImagen}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="142" splitType="Stretch">
+			<textField>
+				<reportElement x="23" y="33" width="515" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{respuesta1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="25" y="113" width="513" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{respuesta5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="23" y="93" width="521" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{respuesta4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="25" y="73" width="517" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{respuesta3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="25" y="53" width="517" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{respuesta2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="33" width="10" height="20"/>
+				<textElement/>
+				<text><![CDATA[a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="53" width="10" height="20"/>
+				<textElement/>
+				<text><![CDATA[b)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="113" width="10" height="20"/>
+				<textElement/>
+				<text><![CDATA[e)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="73" width="10" height="20"/>
+				<textElement/>
+				<text><![CDATA[c)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="93" width="10" height="20"/>
+				<textElement/>
+				<text><![CDATA[d)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="54" y="7" width="427" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{preguntaO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="34" y="7" width="20" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numPregunta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,84 @@
+´´´´´´´´´´´´´´´´´´´´´´´´´.´.´´,´´,´
+´´´´´´´´´´´´´´´´´´´´´´´´´|`´\/´\/´\,’,´
+´´´´´´´´´´´´´´´´´´´´´´´´´;´´´´´´´´´´`´\/\,.´
+´´´´´´´´´´´´´´´´´´´´´´´´:´´´´´´´´´´´´´´´`´\,/´
+´´´´´´´´´´´´´´´´´´´´´´´´|´´´´´´´´´´´´´´´´´´/´
+´´´´´´´´´´´´´´´´´´´´´´´´;´´´´´´´´´´´´´´´´´:´
+´´´´´´´´´´´´´´´´´´´´´´´:´´´´´´´´´´´´´´´´´´;´
+´´´´´´´´´´´´´´´´´´´´´´´|´´´´´´,—.´´´´´´/´
+´´´´´´´´´´´´´´´´´´´´´´:´´´´´,’´´´´´`,-._´\´
+´´´´´´´´´´´´´´´´´´´´´´;´´´´(´´´o´´´´\´´´`’´
+´´´´´´´´´´´´´´´´´´´´_:´´´´´´.´´´´´´,’´´o´;´
+´´´´´´´´´´´´´´´´´´´/,.`´´´´´´`.__,’`-.__,´
+´´´´´´´´´´´´´´´´´´´\_´´_´´´´´´´´´´´´´´´\´
+´´´´´´´´´´´´´´´´´´,’´´/´`,´´´´´´´´´´`.,’´
+´´´´´´´´´´´´___,’`-._´\_/´`,._´´´´´´´´;´
+´´´´´´´´´__;_,’´´´´´´`-.`-’./´`–.____)´
+´´´´´´,-’´´´´´´´´´´´_,–\^-’´OLAXX
+´´´´,:_____´´´´´´,-’´´´´´\´NO TE OLVIDES
+´´´(,’´´´´´`–.´´\;-._´´´´;´QUE ESTE ARCHIVO
+´´´:´´´´Y´´´´´´`-/´´´´`,´´:´LO BAJASTE 
+´´´:´´´´:´´´´´´´:´´´´´/_;’´DE http://www.jc-mouse.net/
+´´´:´´´´:´´´´´´´|´´´´:´MIS ZALU2
+´´´´\´´´´\´´´´´´:´´´´:´KUIDATE
+´´´´´`-._´`-.__,´\´´´´`.´100PRE
+´´´´´´´´\´´´\´´`.´\´´´´´`.´Y RECUERDA
+´´´´´´,-;´´´´\—)_\´,’,'/´AGRADECER
+´´´´´´\_´`—’–’”´,’^-;’´NO CUESTA NADA
+´´´´´´(_`´´´´´—’”´,-’)´Y AYUDA A SEGUIR 
+´´´´´´/´`–.__,.´,-’´´´´\´APORTANDO
+´´´´´´´)-.__,–´||___,–’´`-.´
+´´´´´/._______,|__________,’\´ATTE. MOUSE
+´´´´´`–.____,’|_________,-
+
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+Este proyecto Java utiliza la tecnología MVC (Modelo Vista Controlador) puedes encontrar mucha información
+en la red, yo solo coloco este proyecto tratando de basarme en dicho modelo, la mayoria de la información
+que encontraras es sobre aplicaciones web, sin embargo no hay nada que impida su implementación en java swing
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+INSTALACION DEL PROYECTO
+------------------------
+
+1. Crea una base de datos "db_programacion" en MySQL y restaura la información que esta en el archivo
+   llamado "sql.txt" que se encuentra en la carpeta "base de datos".
+
+2. Abre el proyecto "jcProgramacion" con netbeans 6.9 o superior, busca la clase database.java que se encuentra
+   en el paquete "modelo" y cambia la informacion que ahi se encuentra por los datos de tu MySQL
+
+ /* DATOS PARA LA CONEXION */
+  private String bd = "db_programacion";
+  private String login = "USUARIO MYSQL";
+  private String password = "CONTRASEÑA";
+
+3. Este proyecto hace uso de librerias *.JAR, estas son:
+
+Librerias para Jaspert Report
+- commons-beanutils-1.8.2.jar
+- commons-collections-3.2.1.jar
+- commons-digester-1.7.jar
+- commons-javaflow-20060411.jar
+- commons-logging-1.1.jar
+- groovy-all-1.5.5.jar
+- iText-2.1.7.jar
+- jasperreports-3.7.2.jar
+
+Librerias para la conexion con MySQL
+- mysql-connector-java-5.1.6-bin.jar
+
+Librerias para el manejo y diseño de la interfaz de usuario
+- j2Button.jar
+- JCDesktopPane.jar
+- jcMousePanel-1.6.9.jar
+- jcTablaAsignatura.jar
+
+Todas estas librerias se encuentran en la carpeta "Librerias" 
+
+Si tienes una version mas actualizada de JaspertReport puede que experimentes algunos problemas, lo que puedes
+hacer es utilizar las librerias que vienen con el proyecto o en todo caso adecuar algunas lineas de código
+que te presenten problemas.
+
+
+
+

@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/plugins/images/slider/logo.gif"/>
+        <title>DashBoard Administraci&oacute;n</title>
+        <h:outputScript name="bootstrap.min.js" library="bootstrap/js" target="body" />
+        <h:outputStylesheet name="bootstrap.css" library="bootstrap/css" />
+        <h:outputStylesheet name="styleTables.css" library="plugins/css" /> 
+        <h:outputStylesheet name="font-awesome.css" library="bootstrap/font-awesome/css" />
+        <h:outputStylesheet name="bootstrap.min.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="main.css" library="plugins/css/theme" />
+        <f:loadBundle basename="com.tesis.properties.messages" var="msg"/>
+    </h:head>
+    <h:body>
+        <ui:include src="headerAdministration.xhtml" />
+        <section>
+            <div class="container">
+
+                <div class="row row-offcanvas row-offcanvas-right">
+
+                    <div class="jumbotron">
+                        <h2>Administraci&oacute;n de Sistema!</h2>
+                        <p>Seleccione el gr&aacute;fico que desea ver.</p>
+                    </div>
+                    <p:messages id="msj"></p:messages>
+
+                    <div style="display: none"> 
+                        <div class="col-6 col-sm-6 col-lg-4">
+                            <h2>Gr&aacute;fico de Pastel</h2>
+                            <h:form>
+                                <p><h:commandButton  class="btn btn-success" action="#{charts.getchartViewPie()}" value="Ver detalle »"></h:commandButton></p>
+                            </h:form>
+                        </div><!--/span-->
+
+                    </div>
+
+                    <div> 
+                        <div class="col-6 col-sm-6 col-lg-4">
+                            <h2>Visitas</h2>
+                            <p>Genere gr&aacute;fico de barras de todas las visitas a los m&oacute;dulos del sistema.- </p>
+                            <h:form>
+                                <p><h:commandButton  class="btn btn-success" action="#{charts.getchartViewBar()}" value="Ver detalle »"></h:commandButton></p>
+                            </h:form>
+                        </div><!--/span-->
+
+                    </div>
+                    
+                    
+                    <div> 
+                        <div class="col-6 col-sm-6 col-lg-4">
+                            <h2>Descargas</h2>
+                            <p>Genere gr&aacute;fico de barras de todas las descargas realizadas en los m&oacute;dulos del sistema.- </p>
+                            <h:form>
+                                <p><h:commandButton  class="btn btn-success" action="#{charts.getchartViewDownloads()}" value="Ver detalle »"></h:commandButton></p>
+                            </h:form>
+                        </div><!--/span-->
+
+                    </div>
+                    
+                     <div> 
+                        <div class="col-6 col-sm-6 col-lg-4">
+                            <h2>Descargas por Departamento</h2>
+                            <p>Genere gr&aacute;fico de barras de todas las descargas realizadas a los pensum de los diferentes departamentos de la Universidad de El Salvador.- </p>
+                            <h:form>
+                                <p><h:commandButton  class="btn btn-success" action="#{charts.getchartViewPensum()}" value="Ver detalle »"></h:commandButton></p>
+                            </h:form>
+                        </div><!--/span-->
+
+                    </div>
+
+                    <div style="display: none"> 
+                        <div class="col-6 col-sm-6 col-lg-4">
+                            <h2>Gr&aacute;fico de Lineas</h2>
+                            <h:form>
+                                <p><h:commandButton  class="btn btn-success" action="#{charts.getchartViewLine()}" value="Ver detalle »"></h:commandButton></p>
+                            </h:form>
+                        </div><!--/span-->
+
+                    </div>
+
+
+                </div>
+                <div>
+                    <h:link class="btn btn-primary" outcome="#{admin_controller.dashBoard}" value="Regresar"></h:link>
+                </div>
+
+                <hr></hr>
+
+                <footer>
+                    <p>© Universidad de El Salvador 2014</p>
+                </footer>
+
+            </div>
+        </section>
+    </h:body>
+</html>
+

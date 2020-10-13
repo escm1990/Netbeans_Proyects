@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<configuracion>
+    <descarga id="1">
+        <repositorio>local</repositorio>
+        <activa>TRUE</activa>
+        <direccion>http://localhost/repositorio</direccion>
+        <autenticacion>TRUE</autenticacion>
+        <usuario>juan</usuario>
+        <clave>clave12345</clave>
+    </descarga>
+    <descarga id="2">
+        <repositorio>dropbox</repositorio>
+        <activa>FALSE</activa>
+        <direccion>https://www.dropbox.com/home/Public</direccion>
+        <autenticacion>TRUE</autenticacion>
+        <usuario>escm.1990@gmail.com</usuario>
+        <clave>evangelio280504</clave>
+    </descarga>
+    <descarga id="3">
+        <repositorio>ftp</repositorio>
+        <activa>FALSE</activa>
+        <direccion>ftp://localhost/repositorio</direccion>
+        <autenticacion>FALSE</autenticacion>
+        <usuario>AA</usuario>
+        <clave>BB</clave>
+    </descarga>
+    <carpetatemporal>TEMPORAL</carpetatemporal>
+    <carpetarespaldo>OLDPRINCIPAL</carpetarespaldo>
+</configuracion>

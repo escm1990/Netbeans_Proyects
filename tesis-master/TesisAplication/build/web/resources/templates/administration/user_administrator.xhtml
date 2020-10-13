@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pi="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/plugins/images/slider/logo.gif"/>
+        <h:outputScript name="bootstrap.min.js" library="bootstrap/js" target="body" />     
+        <h:outputStylesheet name="bootstrap.css" library="bootstrap/css" /> 
+        <h:outputStylesheet name="styleTables.css" library="plugins/css" /> 
+        <f:loadBundle basename="com.tesis.properties.messages" var="msg"/>
+        <h:outputStylesheet name="font-awesome.css" library="bootstrap/font-awesome/css" />
+
+        <h:outputStylesheet name="bootstrap.min.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="main.css" library="plugins/css/theme" />
+    </h:head>
+    <h:body>
+        <ui:include src="headerAdministration.xhtml" />
+
+        <section>
+            <div class="container">
+
+                <div class="row row-offcanvas row-offcanvas-right">
+                    <div class="jumbotron">
+                        <h2>Administraci&oacute;n de Usuarios!</h2>
+                        <p>Lista de usuarios disponibles</p>
+                    </div>
+                    <p:messages id="mensaje" closable="true"></p:messages>
+                    <div>
+                        <h:form id="form1">
+                           
+                            <div class="">
+                                <h4>Exportar Datos</h4>
+                                <h:commandLink>
+                                    <p:graphicImage name="excel213.png" library="plugins/images" class="btn btn-default"/>
+                                    <p:dataExporter type="xls" target="list_user" fileName="list_user" />
+                                </h:commandLink>
+
+                                <h:commandLink>
+                                    <p:graphicImage name="adobe2013.png" library="plugins/images" class="btn btn-default"/>
+                                    <p:dataExporter type="pdf" target="list_user" fileName="list_user" />
+                                </h:commandLink>
+                            </div>
+                             <div class="">
+                                <button  class="btn btn-link"  data-toggle="modal" data-target="#addUser" id="agregar" type="button">
+                                    Agregar Nuevo Usuario
+                                </button>
+                            </div>
+                            <p:dataTable value="#{user_controller.usuarios}" var="row" class="table table-hover" id="list_user" 
+                                         emptyMessage="No se encontraron registros..." rows="10"
+                                         paginator="true" paginatorPosition="bottom"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                         rowsPerPageTemplate="10"
+                                         rowKey="#{row.codTesisUserCampus}"
+                                         widgetVar= "culture_list"
+                                         >
+                                <p:column class="info" headerText="Acción" styleClass="tableHeader" style="table-layout: fixed">
+                                    <p:commandLink class="btn btn-success" type="button" onclick="PF('dlg2').show();" style="margin-left: 10px;" update=":formulario">
+                                         <i class="fa fa-pencil"></i>
+                                         <f:setPropertyActionListener target="#{user_controller.user_selected}" value="#{row.fkTesisUser}" />
+                                    </p:commandLink>
+                                    <p:commandLink class="btn btn-success" type="button" onclick="PF('dlg3').show();" style="margin-left: 10px;" update=":formulario">
+                                        <i class="fa fa-remove"></i>
+                                        <f:setPropertyActionListener target="#{user_controller.user_campus_select}" value="#{row}" />
+                                    </p:commandLink>
+                                </p:column>
+                            
+                                <p:column class="info" styleClass="tableHeader" filterBy="#{row.fkTesisUser.userName}">
+                                    <f:facet name="header">
+                                        <h:outputText value="Nombre" style="margin-left: 12px;"/>
+                                    </f:facet>
+                                    <h:outputText value="#{row.fkTesisUser.userName}"/>
+                                </p:column>
+                                <p:column styleClass="tableHeader">
+                                    <f:facet name="header">
+                                        <h:outputText value="Descripción"/>
+                                    </f:facet>
+                                    <h:outputText value="#{row.fkTesisUser.userDescription}"/>
+                                </p:column>
+                                <p:column styleClass="tableHeader">
+                                    <f:facet name="header">
+                                        <h:outputText value="Creado por"/>
+                                    </f:facet>
+                                    <h:outputText value="#{row.fkTesisUser.createdBy}"/>
+                                </p:column>
+                                <p:column styleClass="tableHeader">
+                                    <f:facet name="header">
+                                        <h:outputText value="Creación"/>
+                                    </f:facet>
+                                    <h:outputText value="#{row.fkTesisUser.createdDate.date}-#{row.fkTesisUser.createdDate.month+1}-#{row.fkTesisUser.createdDate.year+1900} #{row.fkTesisUser.createdDate.hours}:#{row.fkTesisUser.createdDate.minutes}:#{row.fkTesisUser.createdDate.seconds}" />
+                                </p:column>
+                                <p:column styleClass="tableHeader">
+                                    <f:facet name="header">
+                                        <h:outputText value="Actualizado por"/>
+                                    </f:facet>
+                                    <h:outputText value="#{row.fkTesisUser.updateBy}"/>
+                                </p:column>
+
+                                <p:column styleClass="tableHeader">
+                                    <f:facet name="header">
+                                        <h:outputText value="Actualización"/>
+                                    </f:facet>
+                                    <h:outputText value="#{row.fkTesisUser.updateDate.date}-#{row.fkTesisUser.updateDate.month+1}-#{row.fkTesisUser.updateDate.year+1900} #{row.fkTesisUser.updateDate.hours}:#{row.fkTesisUser.updateDate.minutes}:#{row.fkTesisUser.updateDate.seconds}" />
+                                </p:column>
+                                
+                                 <p:column styleClass="tableHeader">
+                                    <f:facet name="header">
+                                        <h:outputText value="Campus"/>
+                                    </f:facet>
+                                     <h:outputText value="#{row.fkTesisCampus.campusName}" />
+                                </p:column>
+
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+
+                <div>
+                    <h:link class="btn btn-primary" outcome="#{admin_controller.dashBoard}" value="Regresar"></h:link>
+                </div>
+
+                <p:dialog header="Modificar Usuario" widgetVar="dlg2" modal="true" id="diag" class="modal-sm" width="550px" resizable="false">
+                    <h:form id="formulario">
+                        <div class="modal-body">
+                            <div>
+                                <label for="campusCul">Campus: </label>
+                                <h:selectOneMenu id="campusCul" class="form-control" value="#{user_controller.campus}">
+                                    <f:selectItem id="item1_cul" itemLabel="UES FMOCC" itemValue="1" />                                      
+                                </h:selectOneMenu>
+                            </div>
+                            <div style="">
+                                <label for="username">Nombre de Usuario: </label>
+                                <h:inputText id="username" value="#{user_controller.user_selected.userName}" class="form-control" pi:placeholder="Nombre de Usuario" required="true" requiredMessage="Nombre de usuario es obligatorio!"></h:inputText>
+                            </div>
+                            <div style="">
+                                <label for="pass">Contraseña Anterior: </label>
+                                <p:password id="pass" class="form-control" pi:placeholder="Contraseña" required="true" requiredMessage="Contraseña Anterior es obligatoria!"></p:password>
+                            </div>
+                            
+                            <div style="">
+                                <label for="newpass">Nueva Contraseña: </label>
+                                <p:password id="newpass" value="#{user_controller.user_selected.userPass}" class="form-control" pi:placeholder="Contraseña" required="true" match="repitPass" requiredMessage="Contraseña es obligatoria!" validatorMessage="Contraseñas no coinciden!"></p:password>
+                            </div>
+                            <div style="">
+                                <label for="repitPass">Repita Contraseña: </label>
+                                <p:password id="repitPass" class="form-control" pi:placeholder="Repita Contraseña"></p:password>
+                            </div>
+
+                            <div>
+                                <label for="desUser">Descripci&oacute;n de Usuario: </label>
+                                <h:inputTextarea id="desUser" value="#{user_controller.user_selected.userDescription}" class="form-control" pi:placeholder="Descripci&oacute;n"
+                                                 rows="4">
+                                </h:inputTextarea>
+                            </div>
+
+                        </div>
+                        <div class="" style="margin-left: 300px;">
+                            <div class="">
+                                <h:commandButton class="btn btn-primary"  action="#{user_controller.updateUser()}" value="Guardar" style="margin-top: 0px;">
+                                </h:commandButton>
+                                <button class="btn btn-default" onclick="PF('dlg2').hide();">Cancelar</button>
+                            </div>
+                        </div>
+                    </h:form>
+                </p:dialog> 
+                
+                <p:confirmDialog header="Eliminar Usuario" id="confirmacion"  message="¿Esta seguro de Eliminar?" widgetVar="dlg3" >
+                    <h:form id="formDelete">
+                        <div class="" style="margin-left: 352px;">
+                            <div class="">
+                                <h:commandButton action="#{user_controller.eliminarUser()}" 
+                                                 value="Eliminar"  class="btn btn-primary" style="margin-top: 0px;"
+                                                 >
+                                </h:commandButton>
+                                <button class="btn btn-default">Cancelar</button>
+                            </div>
+                        </div>
+                    </h:form>
+                </p:confirmDialog> 
+                
+                
+            <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close"
+                                    data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Ingrese Nuevo Usuario</h4>
+                        </div>
+                        <h:form id="Nuevo_Usuario">
+                            <div class="modal-body">
+                                <div>
+                                    <label for="campusCul">Campus: </label>
+                                    <h:selectOneMenu id="campusCul" class="form-control" value="#{user_controller.campus}">
+                                        <f:selectItem id="item1_cul" itemLabel="UES FMOCC" itemValue="1" />                                      
+                                    </h:selectOneMenu>
+                                </div>
+                                <div style="">
+                                    <label for="username">Nombre de Usuario: </label>
+                                    <h:inputText id="username" value="#{user_controller.user}" class="form-control" pi:placeholder="Nombre de Usuario" required="true" requiredMessage="Nombre de usuario es obligatorio!"></h:inputText>
+                                </div>
+                                 <div style="">
+                                    <label for="pass">Contraseña: </label>
+                                    <p:password id="pass" value="#{user_controller.pass}" class="form-control" pi:placeholder="Contraseña" required="true" match="repitPass" requiredMessage="Contraseña es obligatoria!" validatorMessage="Contraseñas no coinciden!"></p:password>
+                                </div>
+                                 <div style="">
+                                    <label for="repitPass">Repita Contraseña: </label>
+                                    <p:password id="repitPass" class="form-control" pi:placeholder="Repita Contraseña"></p:password>
+                                </div>
+
+                                <div>
+                                    <label for="desUser">Descripci&oacute;n de Usuario: </label>
+                                    <h:inputTextarea id="desUser" value="#{user_controller.description}" class="form-control" pi:placeholder="Descripci&oacute;n"
+                                                     rows="4">
+                                    </h:inputTextarea>
+                                </div>
+
+                            </div>
+                        <div class="modal-footer">
+                            <div class="">
+                                <h:commandButton  class="btn btn-primary" actionListener="#{user_controller.saveUser()}" value="Guardar" style="margin-top: 0px;">                 
+                                </h:commandButton>
+                                <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+                            
+            </div>
+
+        </section>
+    </h:body>
+</html>
+

@@ -1,0 +1,24 @@
+#contenedor {
+       text-aling:center;
+       width:100%;
+       height:100%;	
+}
+
+#cabecera {
+       width: 100%;
+       height: 50px;
+       text-aling:center;
+}
+
+#izquierda {
+	   float:left;
+       width:20%;
+       height:100%;
+}
+
+#derecha{
+       background-color: yellow;
+	   float:left;
+       width:80%;
+       height:100%;
+}

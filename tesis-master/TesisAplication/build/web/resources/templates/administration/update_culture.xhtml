@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/plugins/images/slider/logo.gif"/>
+        <h:outputScript name="bootstrap.min.js" library="bootstrap/js" target="body" />     
+        <h:outputStylesheet name="bootstrap.css" library="bootstrap/css" /> 
+        <h:outputStylesheet name="styleTables.css" library="plugins/css" /> 
+        <f:loadBundle basename="com.tesis.properties.messages" var="msg"/>
+        <h:outputStylesheet name="font-awesome.css" library="bootstrap/font-awesome/css" />
+        
+        <h:outputStylesheet name="bootstrap.min.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="main.css" library="plugins/css/theme" />
+        <h:outputScript target="body" >
+            function llamarFile() {
+            document.getElementById('formulario:file-input').click();
+            document.getElementById("formulario:file-input").onchange = function(e) {
+            addImage(e);
+            }
+            }
+            function addImage(e) {
+            var file = e.target.files[0],
+            imageType = /image.*/;
+
+            if (!file.type.match(imageType))
+            return;
+
+            var reader = new FileReader();
+            reader.onload = fileOnload;
+            reader.readAsDataURL(file);
+            }
+
+            function fileOnload(e) {
+            var result = e.target.result;
+            document.getElementById("formulario:imgSalida").src = result;
+            }
+
+            function deleteImg() {
+            document.getElementById("formulario:imgSalida").src =  "/TesisAplication/faces/javax.faces.resource/image.png?ln=plugins/images";
+            document.getElementById("formulario:file-input").value = "";
+            }
+
+        </h:outputScript> 
+    </h:head>
+    <h:body>
+        <ui:include src="headerAdministration.xhtml" />
+        <section>
+        <div class="container">
+
+            <div class="row row-offcanvas row-offcanvas-right">
+                <div class="jumbotron">
+                    <h2>Administraci&oacute;n de Sistema!</h2>
+                    <p>Seleccione el evento cultural que desea actualizar.</p>
+                </div>
+                <p:messages id="mensaje" closable="true"></p:messages>
+                <div>
+                    <h:form id="form1" >
+                        <div class="">
+                            <h4>Exportar Datos</h4>
+                            <h:commandLink>
+                                <p:graphicImage name="excel213.png" library="plugins/images" class="btn btn-default"/>
+                                <p:dataExporter type="xls" target="list_cult" fileName="list_cult" />
+                            </h:commandLink>
+
+                            <h:commandLink>
+                                <p:graphicImage name="adobe2013.png" library="plugins/images" class="btn btn-default"/>
+                                <p:dataExporter type="pdf" target="list_cult" fileName="list_cult"  />
+                            </h:commandLink>
+                        </div>
+                        <p:dataTable value="#{update_cul.lista}" var="row" class="table table-hover" id="list_cult" 
+                                     emptyMessage="No se encontraron registros..." rows="10"
+                                     paginator="true" paginatorPosition="bottom"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                     rowsPerPageTemplate="10"
+                                     rowKey="#{row.codTesisCulture}"
+                                     widgetVar= "culture_list"
+                                     >
+                            <p:column class="info" headerText="Acción" styleClass="tableHeader" style="table-layout: fixed">
+                                <p:commandLink class="btn btn-default fa fa-pencil" type="button" onclick="PF('dlg2').show();" style="width: 46px;" update=":formulario">
+                                    <f:setPropertyActionListener target="#{update_cul.culture_select}" value="#{row}" />
+                                </p:commandLink>
+                            </p:column>
+
+                            <p:column class="info" styleClass="tableHeader" filterBy="#{row.cultureName}">
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre" style="margin-left: 12px;"/>
+                                </f:facet>
+                                <h:outputText value="#{row.cultureName}"/>
+                            </p:column>
+                            <p:column styleClass="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="Imagen"/>
+                                </f:facet>
+                                <h:graphicImage class="img-rounded" library="#{row.fkSystemImages.imageUri}" name="#{row.fkSystemImages.imageDescription}" width="100px" height="90px"/>
+                            </p:column>
+                            <p:column styleClass="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="Documento"/>
+                                </f:facet>
+                                <p:commandLink action="#{update_cul.downloadArchivo()}" ajax="false">
+                                    <h:outputText value="#{row.fkSystemDocument.documentDescription}" style="color: rgb(35, 35, 171);"/>
+                                    <f:setPropertyActionListener target="#{update_cul.culture_select}" value="#{row}" />
+                                </p:commandLink>
+                            </p:column>
+                            <p:column styleClass="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="Campus"/>
+                                </f:facet>
+                                <h:outputText value="#{row.fkTesisCampus.campusName}"/>
+                            </p:column>
+                            <p:column styleClass="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="Creado por"/>
+                                </f:facet>
+                                <h:outputText value="#{row.createdBy}"/>
+                            </p:column>
+                            <p:column styleClass="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="Creación"/>
+                                </f:facet>
+                                <h:outputText value="#{row.createdDate.date}-#{row.createdDate.month+1}-#{row.createdDate.year+1900} #{row.createdDate.hours}:#{row.createdDate.minutes}:#{row.createdDate.seconds}" />
+                            </p:column>
+                            <p:column styleClass="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="Actualizado por"/>
+                                </f:facet>
+                                <h:outputText value="#{row.updateBy}"/>
+                            </p:column>
+
+                            <p:column styleClass="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="Actualización"/>
+                                </f:facet>
+                                <h:outputText value="#{row.updateDate.date}-#{row.updateDate.month+1}-#{row.updateDate.year+1900} #{row.updateDate.hours}:#{row.updateDate.minutes}:#{row.updateDate.seconds}" />
+                            </p:column>
+
+                        </p:dataTable>
+                    </h:form>
+                </div>
+            </div>
+
+            <div>
+                <h:link class="btn btn-primary" outcome="#{admin_controller.dashBoard}" value="Regresar"></h:link>
+            </div>
+
+            <p:dialog header="Modificar Evento Cultural" widgetVar="dlg2" modal="true" id="diag" class="modal-sm" width="550px" style="position: absolute;" resizable="false">
+                <h:form enctype="multipart/form-data" id="formulario">
+                    <div class="">
+                        <div>
+                            <div class="col-md-6">
+                                <h:graphicImage class="img-rounded" library="#{update_cul.culture_select.fkSystemImages.imageUri}" name="#{update_cul.culture_select.fkSystemImages.imageDescription}" width="120px" height="100px" id="imgSalida"/>
+                                <div> 
+                                    <p:commandButton icon="ui-icon-image" id="cargar" onclick="llamarFile();" ></p:commandButton>
+                                    <p:commandButton icon="ui-icon-closethick" id="eliminar" onclick="deleteImg();"></p:commandButton>
+                                    <h:inputFile id="file-input" style="display: none" value="#{update_cul.image}">
+                                         <f:validator validatorId="FileUploadValidator" />
+                                    </h:inputFile>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="height: 140px;">
+                                <label for="campus">Campus: </label>
+                                <h:selectOneMenu id="campus" class="form-control" value="#{update_cul.culture_select.fkTesisCampus.codTesisCampus}">
+                                    <f:selectItem id="item1" itemLabel="UES FMOCC" itemValue="1" />
+                                </h:selectOneMenu>
+                            </div>
+
+                        </div>
+                        <div style="padding-top: 10px;">
+                            <label for="text">Archivo Cargado: </label>
+                            <h:outputText id="text" value="#{update_cul.culture_select.fkSystemDocument.documentDescription}" class="form-control"/>
+                        </div>
+                        <div>
+                            <label for="anexo">Reemplazar Archivo: </label>
+                            <h:inputFile id="anexo" class="form-control" value="#{update_cul.newfile}"/>
+                        </div>
+
+                        <div>
+                            <label for="nombreInfa">Evento Cultural: </label>
+                            <p:inputText id="nombreInfa" value="#{update_cul.culture_select.cultureName}" class="form-control" p:placeholder="Evento Cultural" required="true"></p:inputText>
+                        </div>
+
+                        <div>
+                            <label for="desInfa">Descripci&oacute;n de Cultura: </label>
+                            <h:inputTextarea id="desInfa" value="#{update_cul.culture_select.cultureDescription}" class="form-control" p:placeholder="Descripci&oacute;n" rows="8"></h:inputTextarea>
+                        </div>
+
+                    </div>
+                    <div class="" style="margin-left: 300px;">
+                        <div class="">
+                            <h:commandButton class="btn btn-primary"  action="#{update_cul.actualizar_cultura()}" value="Guardar" style="margin-top: 0px;">
+                            </h:commandButton>
+                            <button class="btn btn-default" onclick="PF('dlg2').hide();">Cancelar</button>
+                        </div>
+                    </div>
+                </h:form>
+            </p:dialog> 
+        </div>
+
+    </section>
+    </h:body>
+</html>
+

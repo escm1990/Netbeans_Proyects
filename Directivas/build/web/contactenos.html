@@ -1,0 +1,66 @@
+<html>
+
+<justify>
+Completa los campos de nuestro formulario para ponerse en contacto con nuestro restaurante. En el mismo puedes hacer reservaciones, mandarnos sugerencias o dudas y nosotros te las resolveremos.
+</justify>
+
+<br>
+
+<form name="formulario" action="mailto:escm.1990@gmail.com" method="post" enctype="text/plain"
+  onSubmit="alert('Espere un momento...'); return true;">
+
+<table border=0>			
+
+<tr>
+<td width=40%><b>(*) Nombre Completo:</td>
+<td width=60%><input type="text" name="nombre"></td>
+</tr>
+
+<tr>
+<td width=40%><b>(*) Password:</td>
+<td width=60%><input type="password" name="pass"></td>
+</tr>
+
+<tr>
+<td width=40%><b>(*) Edad:</td>
+<td width=60%><input type="text" name="edad" maxlength="3"></td>
+</tr>
+
+<tr>
+<td width=40%><b>(*) Sexo:</td>
+<td width=60%><select name="sexo">
+<option>Masculino
+<option>Femenino
+</select>
+</td>
+</tr>
+
+<tr>
+<td width=40%><b>(*) E-mail:</td>
+<td width=60%><input type="text" name="email"></td>
+</tr>
+
+<tr>
+<td width=40%><b>(*) Tel�fono:</td>
+<td width=60%><input type="text" name="telefono" maxlength="8"></td>
+</tr>
+
+<tr>
+<td width=40%><b>Mensaje:</td>
+<td width=60%><textarea name="mensaje" rows ="5" cols="30"></textarea></td>
+</tr>
+
+</table>
+
+<br>
+<input type="submit" value="Enviar Datos"> 
+<input type="reset" value="Borrar Datos">
+
+</form>
+
+<br>
+<b><font color ="#4E2F2F"><br>Los campos con (*) son OBLIGATORIOS
+
+
+</body>
+</hmtl>

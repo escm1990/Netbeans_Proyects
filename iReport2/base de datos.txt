@@ -1,0 +1,31 @@
+base de datos: dbSample
+
+create table PERSONA (
+	p_id bigint(20) NOT NULL auto_increment primary key,	
+	p_nombre Varchar(20) not null,
+	p_paterno Varchar(20) not null,
+	p_materno Varchar(20) null,
+	p_direccion Varchar(100) null,
+	p_telefono varchar(12) null	
+);
+   
+insert into PERSONA( p_nombre , p_paterno , p_materno , p_direccion , p_telefono )
+values('Antonio','Bragueta','Suelta','Calle Imaginaria # 345','123-456-789');
+
+insert into PERSONA( p_nombre , p_paterno , p_materno , p_direccion , p_telefono )
+values('Jesús','Están','Camino','Calle Imaginaria # 598','');
+   
+insert into PERSONA( p_nombre , p_paterno , p_materno , p_direccion , p_telefono )
+values('Margarita','Flores','del Campo','Calle Imaginaria # 989','878-998-565');
+  
+insert into PERSONA( p_nombre , p_paterno , p_materno , p_direccion , p_telefono )
+values('Rosa','Pechoabierto','Alinstante','Calle Imaginaria # 339','');
+  
+insert into PERSONA( p_nombre , p_paterno , p_materno , p_direccion , p_telefono )
+values('Emiliano','Salido','del Pozo','Av. Quete Importa s/n','888-298-565');
+   
+insert into PERSONA( p_nombre , p_paterno , p_materno , p_direccion , p_telefono )
+values('Dolores','Fuertes','De barriga','Av. Quete Importa #779','008-908-165');
+
+insert into PERSONA( p_nombre , p_paterno , p_materno , p_direccion , p_telefono )
+values('Juan','Melo','Machuca','Calle Noseencuentra #721','098-334-212');

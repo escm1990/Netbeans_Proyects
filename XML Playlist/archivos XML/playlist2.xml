@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<playlist>
+	<song id="1">
+		<titulo>Feel Good</titulo>
+		<artista>Gorilas</artista>
+		<album>Nose</album>
+		<location>E:/mp3/FEEL GOOD INC.mp3</location>
+		<artLocation>/album/album1.jpg</artLocation>		
+	</song>
+	<song id="2">
+		<titulo>Munaskechay</titulo>
+		<artista>Kjarkas</artista>
+		<album>KJarkas</album>
+		<location>e:/mp3/munaskechay.mp3</location>
+		<artLocation>/album/album2.jpg</artLocation>		
+	</song>
+	<song id="3">
+		<titulo>Smooth criminal</titulo>
+		<artista>gorilas</artista>
+		<album>beto a saber</album>
+		<location>e:\mp3\Smooth criminal.mp3</location>
+		<artLocation>/album/album3.jpg</artLocation>		
+	</song>
+	<song id="4">
+		<titulo>Lenta y algo mas</titulo>
+		<artista>Savage Garden</artista>
+		<album></album>
+		<location>e:\mp3\savage garden.mp3</location>
+		<artLocation>/album/album4.jpg</artLocation>		
+	</song>
+	<song id="5">
+		<titulo>30 minutos</titulo>
+		<artista>tatu</artista>
+		<album>lesbis sexys</album>
+		<location>e:\mp3\Tatu-30_Minutes-remix.mp3</location>
+		<artLocation>/album/album5.jpg</artLocation>		
+	</song>
+	<song id="6">
+		<titulo>my Plague</titulo>
+		<artista>Slipknot</artista>
+		<album>ni idea</album>
+		<location>e:\mp3\Slipknot-My_Plague.mp3</location>
+		<artLocation></artLocation>		
+	</song>
+	<song id="7">
+		<titulo>Ser mejor</titulo>
+		<artista>Robie willians</artista>
+		<album></album>
+		<location>e:\mp3\robbie willians - Ser Mejor.mp3</location>
+		<artLocation></artLocation>		
+	</song>
+</playlist>

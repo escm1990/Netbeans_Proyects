@@ -1,0 +1,100 @@
+-- phpMyAdmin SQL Dump
+-- version 2.10.3
+-- http://www.phpmyadmin.net
+-- 
+-- Servidor: localhost
+-- Tiempo de generación: 13-13-2013 a las 13:13:13
+-- Versión del servidor: 5.0.51
+-- Versión de PHP: 5.2.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+-- 
+-- Base de datos: 'db_programacion'
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla 'materia'
+-- 
+
+CREATE TABLE materia (
+  m_sigla char(7) NOT NULL,
+  m_nombre varchar(60) NOT NULL,
+  m_curso int(20) NOT NULL,
+  m_tipo char(12) NOT NULL,
+  PRIMARY KEY  (m_sigla)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- 
+-- Volcar la base de datos para la tabla 'materia'
+-- 
+
+INSERT INTO materia VALUES ('SIS-420', 'Inteligencia Artificial', 3, 'Obligatorio');
+INSERT INTO materia VALUES ('SIS-120', 'Programacion en Ensamblador', 6, 'Opcional');
+INSERT INTO materia VALUES ('SIS-360', 'Diseño de Algoritmos', 5, 'Opcional');
+INSERT INTO materia VALUES ('IND-234', 'Gestión de Proyectos', 8, 'Opcional');
+INSERT INTO materia VALUES ('SIS-100', 'Introducción a la Computación', 9, 'Obligatorio');
+INSERT INTO materia VALUES ('MAT-400', 'Cálculo IV', 5, 'Obligatorio');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla 'matricula'
+-- 
+
+CREATE TABLE matricula (
+  m_ID varchar(9) NOT NULL,
+  m_gestion varchar(5) NOT NULL default '00/00',
+  m_fecha datetime NOT NULL,
+  PRIMARY KEY  (m_ID)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- 
+-- Volcar la base de datos para la tabla 'matricula'
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla 'programacion'
+-- 
+
+CREATE TABLE programacion (
+  p_matricula varchar(9) NOT NULL,
+  p_univ char(7) default NULL,
+  p_materia char(7) default NULL,
+  p_grupo varchar(4) NOT NULL default '-',
+  KEY p_univ (p_univ),
+  KEY p_materia (p_materia)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- 
+-- Volcar la base de datos para la tabla 'programacion'
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla 'universitario'
+-- 
+
+CREATE TABLE universitario (
+  u_cu char(7) NOT NULL,
+  u_ci char(7) NOT NULL,
+  u_nombre varchar(100) NOT NULL,
+  PRIMARY KEY  (u_cu)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- 
+-- Volcar la base de datos para la tabla 'universitario'
+-- 
+
+INSERT INTO universitario VALUES ('35-3535', '1234567', 'Ana Lisa Meltrozo');
+INSERT INTO universitario VALUES ('35-3536', '1234567', 'Dolores Debolas');
+INSERT INTO universitario VALUES ('35-1234', '1234567', 'Elvis Cochuelo');
+INSERT INTO universitario VALUES ('35-4321', '1234567', 'Kevin Chuca Minovia');
+INSERT INTO universitario VALUES ('35-2255', '1234567', 'Susana Horia Legusta');

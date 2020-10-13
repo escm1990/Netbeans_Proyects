@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/plugins/images/slider/logo.gif"/>
+        <title>DashBoard Administraci&oacute;n</title>
+        <h:outputScript name="bootstrap.min.js" library="bootstrap/js" target="body" />
+        <h:outputStylesheet name="bootstrap.css" library="bootstrap/css" />
+        <h:outputStylesheet name="styleTables.css" library="plugins/css" /> 
+        <h:outputStylesheet name="bootstrap.min.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="main.css" library="plugins/css/theme" />
+        <f:loadBundle basename="com.tesis.properties.messages" var="msg"/>
+        <h:outputStylesheet name="font-awesome.css" library="bootstrap/font-awesome/css" />
+    </h:head>
+    <h:body>
+        <ui:include src="headerAdministration.xhtml" />
+        
+        <section>
+        <div class="container">
+
+            <div class="row row-offcanvas row-offcanvas-right">
+
+                <div class="jumbotron">
+                    <h2>Administraci&oacute;n de Sistema!</h2>
+                    <p>Seleccione el evento cultural que desea eliminar.</p>
+                </div>
+                <p:messages id="msj" closable="true"></p:messages>
+                <div>
+
+                    <h:form id="form1">
+                       
+                        <div class="">
+                            <h4>Exportar Datos</h4>
+                            <h:commandLink>
+                                <p:graphicImage name="excel213.png" library="plugins/images" class="btn btn-default"/>
+                                <p:dataExporter type="xls" target="list_cult" fileName="list_cult" />
+                            </h:commandLink>
+
+                            <h:commandLink>
+                                <p:graphicImage name="adobe2013.png" library="plugins/images" class="btn btn-default"/>
+                                <p:dataExporter type="pdf" target="list_cult" fileName="list_cult" />
+                            </h:commandLink>
+                        </div>
+                        <p:dataTable value="#{delete_cul.list}" var="row" class="table table-hover" id="list_cult"
+                                     emptyMessage="No se encontraron registros..." rows="10"
+                                     paginator="true" paginatorPosition="bottom"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                     rowsPerPageTemplate="10"
+                                     rowKey="#{row.codTesisCulture}"
+                                     widgetVar= "infraestructura_list"
+                                     >
+                            <p:column class="info" headerText="Acción" styleClass="tableHeader">
+                                <p:commandLink class="btn btn-default fa fa-trash" type="button" onclick="PF('dlg2').show();" style="width: 46px;text-decoration: underline;" update=":formDelete">
+                                    <f:setPropertyActionListener target="#{delete_cul.culture_select}" value="#{row}" />
+                                </p:commandLink>
+                            </p:column>
+
+                            <p:column class="info" styleClass="tableHeader" filterBy="#{row.cultureName}">
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre" style="margin-left: 12px;"/>
+                                </f:facet>
+                                <h:outputText value="#{row.cultureName}"/>
+                            </p:column>
+                            <p:column styleClass="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="Imagen"/>
+                                </f:facet>
+                                <h:graphicImage class="img-rounded" library="#{row.fkSystemImages.imageUri}" name="#{row.fkSystemImages.imageDescription}" width="100px" height="90px"/>
+                            </p:column>
+                            <p:column styleClass="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="Documento"/>
+                                </f:facet>
+                                <p:commandLink action="#{delete_cul.downloadArchivo()}" ajax="false">
+                                    <h:outputText value="#{row.fkSystemDocument.documentDescription}" style="color: rgb(35, 35, 171);"/>
+                                    <f:setPropertyActionListener target="#{delete_cul.culture_select}" value="#{row}" />
+                                </p:commandLink>
+                            </p:column>
+                            <p:column styleClass="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="Campus"/>
+                                </f:facet>
+                                <h:outputText value="#{row.fkTesisCampus.campusName}"/>
+                            </p:column>
+                            <p:column styleClass="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="Creado por"/>
+                                </f:facet>
+                                <h:outputText value="#{row.createdBy}"/>
+                            </p:column>
+                            <p:column styleClass="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="Creación"/>
+                                </f:facet>
+                                <h:outputText value="#{row.createdDate.date}-#{row.createdDate.month+1}-#{row.createdDate.year+1900} #{row.createdDate.hours}:#{row.createdDate.minutes}:#{row.createdDate.seconds}" />
+                            </p:column>
+                            <p:column styleClass="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="Actualizado por"/>
+                                </f:facet>
+                                <h:outputText value="#{row.updateBy}"/>
+                            </p:column>
+
+                            <p:column styleClass="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="Actualización"/>
+                                </f:facet>
+                                <h:outputText value="#{row.updateDate.date}-#{row.updateDate.month+1}-#{row.updateDate.year+1900} #{row.updateDate.hours}:#{row.updateDate.minutes}:#{row.updateDate.seconds}" />
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </h:form>
+
+                </div> 
+
+            </div>
+            <div>
+                <h:link class="btn btn-primary" outcome="#{admin_controller.dashBoard}" value="Regresar"></h:link>
+            </div>
+
+            <p:confirmDialog header="Eliminar Evento Cultural" id="confirmacion"  message="¿Esta seguro de Eliminar?" widgetVar="dlg2" >
+                <h:form id="formDelete">
+                    <div class="" style="margin-left: 352px;">
+                        <div class="">
+                            <h:commandButton action="#{delete_cul.eliminar()}" 
+                                             value="Eliminar"  class="btn btn-primary" style="margin-top: 0px;"
+                                             >
+                            </h:commandButton>
+                            <button class="btn btn-default">Cancelar</button>
+                        </div>
+                    </div>
+                </h:form>
+            </p:confirmDialog>   
+
+            <hr></hr>
+
+            <footer>
+                <p>© Universidad de El Salvador 2014</p>
+            </footer>
+
+        </div>
+            </section>
+    </h:body>
+</html>
+

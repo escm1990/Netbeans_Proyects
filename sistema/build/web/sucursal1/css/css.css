@@ -1,0 +1,50 @@
+/*  tablas  */
+.table {
+	border-collapse: collapse;
+	margin: 10px 15px;
+
+}
+
+.td {
+	padding-left: 12px;
+	padding-right: 12px;
+	border: none;
+	font-size: 12px;
+	height:20px; 
+}
+.tds {
+	padding-left: 12px;
+	padding-right: 12px;
+	border: 1px solid #65B9DD; 
+	font-size: 12px; 
+}
+.th {
+	background: #306bc1 url(button-bg.jpg) repeat-x 0 0; 
+	height: 20px;	
+	font-size:14px;
+	padding-left: 12px;
+	padding-right: 12px;
+	color: #fff;
+	text-align: center;
+	border: 1px solid #306bc1;
+	border-bottom-width: 2px;
+}
+input {
+	border: 1px solid #C8D2D9;
+	margin: 0 0 3px 0;
+	font: 12px "Lucida Sans Unicode", "Lucida Sans", "Lucida Grande", verdana, arial, helvetica;
+	color: #282828;	
+	
+}
+.submit {
+    font-size: 12px;
+    width:69px;
+    height:26px;
+    color:#FFF;
+    font-weight:bold;
+    padding:2px 5px;
+    background:url(boton.gif);
+    cursor:pointer;
+    border:none;
+}
+

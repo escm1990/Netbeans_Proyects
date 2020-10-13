@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/plugins/images/slider/logo.gif"/>
+        <title>DashBoard Administraci&oacute;n</title>
+        <h:outputScript name="bootstrap.min.js" library="bootstrap/js" target="body" />
+        <h:outputStylesheet name="bootstrap.css" library="bootstrap/css" />
+        <h:outputStylesheet name="styleTables.css" library="plugins/css" /> 
+         <h:outputStylesheet name="font-awesome.css" library="bootstrap/font-awesome/css" />
+        <h:outputStylesheet name="bootstrap.min.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="main.css" library="plugins/css/theme" />
+        <f:loadBundle basename="com.tesis.properties.messages" var="msg"/>
+    </h:head>
+    <h:body>
+         <ui:include src="headerAdministration.xhtml" />
+          <section>
+            <div class="container">
+
+                <div class="row row-offcanvas row-offcanvas-right">
+
+                    <div class="jumbotron">
+                        <h2>Administraci&oacute;n de Sistema!</h2>
+                        <p>Resultado de Consulta.</p>
+                    </div>
+                    <p:messages id="msj"></p:messages>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <p:chart type="line" model="#{lineChart.dateModel}" style="width:800px;height:450px" widgetVar="chart"/> 
+                        </div>
+                        <div class="col-md-2">
+                            
+                        </div>
+                        <div class="col-md-2">
+                            <h:form>
+                                <p:commandButton type="button" value="Exportar como Imagen" icon="ui-icon-extlink" class="btn btn-success" onclick="exportChart()"/>
+                            </h:form>
+                           
+                        </div>
+                    </div>
+                    <p:dialog widgetVar="dlg" showEffect="fade" modal="true" header="Gráfico Exportado" resizable="false">
+                        <p:outputPanel id="output" layout="block" style="width:850px;height:550px"/>
+                    </p:dialog>
+
+
+                </div>
+                <div>
+                    <h:link class="btn btn-primary" outcome="line_chart" value="Regresar"></h:link>
+                </div>
+
+                <hr></hr>
+
+                <footer>
+                    <p>© Universidad de El Salvador 2014</p>
+                </footer>
+
+            </div>
+        </section>
+         
+         
+    <script type="text/javascript">
+    function exportChart() {
+
+        $('#output').empty().append(PF('chart').exportAsImage());
+         PF('dlg').show();
+       }
+    </script>
+    </h:body>
+</html>
+

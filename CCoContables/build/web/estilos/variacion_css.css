@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+
+#contenedor {
+	text-aling:center;
+	width:100%;
+	height:100%;	
+}
+
+#cabecera {
+       width: 100%;
+       height: 50px;
+       text-aling:center;
+}
+
+#variacion {
+       background-color: green;
+       float: left;
+       width:100%;
+       height:100%;
+}

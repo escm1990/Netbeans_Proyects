@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp codebase="http://napkinlaf.sourceforge.net/" href="napkin.jnlp">
+
+    <information>
+        <title>Napkin Look and Feel Demo</title>
+        <vendor>Napkin Look and Feel Project</vendor>
+        <description>Napkin Look and Feel Demo</description>
+        <homepage>http://napkinlaf.sourceforge.net/</homepage>
+        <offline-allowed/>
+    </information>
+
+    <resources>
+        <j2se version="1.5+"/>
+        
+<jar href="napkinlaf-swingset-1.2.jar" main="true"/>
+<jar href="napkinlaf-1.2.jar"/>
+<jar href="jdom-1.0.jar"/>
+
+    </resources>
+    <application-desc main-class="SwingSet2"/>
+</jnlp>

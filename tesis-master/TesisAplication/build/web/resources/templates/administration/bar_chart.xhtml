@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/plugins/images/slider/logo.gif"/>
+        <title>DashBoard Administraci&oacute;n</title>
+        <h:outputScript name="bootstrap.min.js" library="bootstrap/js" target="body" />
+        <h:outputStylesheet name="bootstrap.css" library="bootstrap/css" />
+        <h:outputStylesheet name="styleTables.css" library="plugins/css" /> 
+        <h:outputStylesheet name="font-awesome.css" library="bootstrap/font-awesome/css" />
+        <h:outputStylesheet name="bootstrap.min.css" library="plugins/css/theme" />
+        <h:outputStylesheet name="main.css" library="plugins/css/theme" />
+        <f:loadBundle basename="com.tesis.properties.messages" var="msg"/>
+    </h:head>
+    <h:body>
+         <ui:include src="headerAdministration.xhtml" />
+          <section>
+            <div class="container">
+
+                <div class="row row-offcanvas row-offcanvas-right">
+
+                    <div class="jumbotron">
+                        <h2>Administraci&oacute;n de Sistema!</h2>
+                        <p>Seleccione el rango de fechas que desea auditar.</p>
+                    </div>
+                    <p:messages id="msj"></p:messages>
+
+                    <h:form id="form">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <p:outputLabel for="desde" value="Desde: " style="margin-right: 20px;"/>
+                                    <p:calendar showOn="button" id="desde" value="#{barChart.from}" pattern="yyyy-MM-dd" required="true" requiredMessage="El campo Desde es requerido"/>
+                                    <p:outputLabel for="hasta" value="Hasta: " style="margin-right: 20px;"/>
+                                    <p:calendar showOn="button" id="hasta" value="#{barChart.to}" pattern="yyyy-MM-dd" style="margin-bottom: 10px;" required="true" requiredMessage="El campo Hasta es requerido"/>
+
+                                </h:panelGrid>
+
+                            </div>
+                            <div class="col-md-2">
+                                <h:commandButton class="btn btn-success" action="#{barChart.calChartBar()}" value="Consultar"></h:commandButton>
+                            </div>
+                        </div>
+
+
+                    </h:form>
+
+                </div>
+                <div>
+                    <h:link class="btn btn-primary" outcome="chart_administration" value="Regresar"></h:link>
+                </div>
+
+                <hr></hr>
+
+                <footer>
+                    <p>© Universidad de El Salvador 2014</p>
+                </footer>
+
+            </div>
+        </section>
+    </h:body>
+</html>
+

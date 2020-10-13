@@ -1,0 +1,325 @@
+Nombre de Archivo: jpFiguras2D.java.txt
+
+/* Codigo para la clase jpFiguras2D */
+
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.Arc2D;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
+import java.awt.geom.QuadCurve2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.RoundRectangle2D;
+import java.text.NumberFormat;
+import javax.swing.JButton;
+import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+/**
+ * @web http://jc-mouse.blogspot.com/
+ * @author Mouse
+ */
+public class jpFiguras2D extends JPanel {
+
+    Point2D Punto1;
+    Point2D Punto2;
+    Point2D Punto3;
+    
+    // 0 = Arc2D.OPEN
+    // 1 = Arc2D.CHORD
+    // 2 = Arc2D.PIE
+    private int estado_arco = 0;//
+    
+    private Color color;
+    private Float grosor_linea=3.0f;
+    private boolean relleno =false;
+   //para RoundRectangle2D
+    private Float ancho_curva=0f;
+    private Float largo_curva=0f;
+    // para Arc2D
+    private Float angulo_inicio=0f;
+    private Float angulo_fin=100f;
+    // para el dibujo de la cuadricula
+    private int grilaX=0;
+    private int grilaY=0;
+    //variable de control
+    private int Opcion=-1;
+    //mensajes de error
+    private String MensajeError="";
+    private String MensajeError1="- No se puede dibujar -";
+    private String MensajeError2="[ERROR] No se pudo convertir";
+    private String MensajeError3="[ERROR]Parametros incorrectos";
+    private String MensajeError4="[ERROR]Formato incorrecto";
+
+//constructor
+   public jpFiguras2D(Dimension d){
+      this.setPreferredSize(d);
+      this.setSize(d);
+      this.setVisible(true);
+      this.repaint();
+      this.color=new Color(0,0,0);
+   }
+    
+    @Override
+    public void paintComponent(Graphics g)
+   {
+     super.paintComponent(g);
+     Graficar(g);  
+   }    
+    
+    //metodo encargado de graficar las figuras
+   void Graficar(Graphics ap){
+   
+        Graphics2D g2 = (Graphics2D) ap;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); 
+        //dibuja la cuadricula
+        grilla(g2);
+        /* estable el color y tipode linea para el dibujo */
+        //color de la linea
+        g2.setColor(this.color);
+        //grosor de la linea
+        g2.setStroke(new BasicStroke(this.grosor_linea));
+        //segun la Opcion, dibuja
+        switch (Opcion){
+            case 0://Linea2D
+                g2.draw(new Line2D.Double(Punto1.getX(),Punto1.getY(),Punto2.getX(),Punto2.getY()));            
+                dibuja_coordenada(g2,Punto1.getX(),Punto1.getY(),"Inicio");
+                dibuja_coordenada(g2,Punto2.getX(),Punto2.getY(),"Fin");   
+                break;
+            case 1://Rectangle2D
+                if(relleno){
+                    g2.fill(new Rectangle2D.Double(Punto1.getX(),Punto1.getY(),Punto2.getX(),Punto2.getY()));                      
+                }else{
+                    g2.draw(new Rectangle2D.Double(Punto1.getX(),Punto1.getY(),Punto2.getX(),Punto2.getY()));                      
+                }        
+                dibuja_coordenada(g2,Punto1.getX(),Punto1.getY(),"Origen");
+                dibuja_coordenada(g2,Punto1.getX()+Punto2.getX(),Punto1.getY()+Punto2.getY(),"Dimension"); 
+                break;
+            case 2://RoundRectangle2D
+                if(relleno){            
+                    g2.fill(new RoundRectangle2D.Double(Punto1.getX(),Punto1.getY(),Punto2.getX(),Punto2.getY(),ancho_curva,largo_curva));                      
+                }else{
+                    g2.draw(new RoundRectangle2D.Double(Punto1.getX(),Punto1.getY(),Punto2.getX(),Punto2.getY(),ancho_curva,largo_curva));                                  
+                }
+                dibuja_coordenada(g2,Punto1.getX(),Punto1.getY(),"Origen");
+                dibuja_coordenada(g2,Punto1.getX()+Punto2.getX(),Punto1.getY()+Punto2.getY(),"Dimension");                  
+                break;
+            case 3://Ellipse2D
+                 if(relleno){
+                    g2.fill(new Ellipse2D.Double(Punto1.getX(),Punto1.getY(),Punto2.getX(),Punto2.getY()));            
+                }else{
+                    g2.draw(new Ellipse2D.Double(Punto1.getX(),Punto1.getY(),Punto2.getX(),Punto2.getY()));
+                }        
+                g2.setStroke(new BasicStroke(0.5f));
+                g2.setColor(new Color(0,0,0));
+                g2.draw(new Rectangle2D.Double(Punto1.getX(),Punto1.getY(), Punto2.getX(),Punto2.getY()));          
+                dibuja_coordenada(g2,Punto1.getX(),Punto1.getY(),"P1");
+                dibuja_coordenada(g2,Punto1.getX()+Punto2.getX(),Punto1.getY()+Punto2.getY(),"P2");                  
+                break;
+            case 4://Arc2D
+                 if(relleno){
+                    g2.fill(new Arc2D.Double(Punto1.getX(),Punto1.getY(),Punto2.getX(),Punto2.getY(), angulo_inicio, angulo_fin, this.estado_arco));
+                }else{
+                    g2.draw(new Arc2D.Double(Punto1.getX(),Punto1.getY(),Punto2.getX(),Punto2.getY(), angulo_inicio, angulo_fin, this.estado_arco));                                    
+                }                 
+                g2.setStroke(new BasicStroke(1.0f));
+                g2.setColor(new Color(0,0,0));
+                g2.draw(new Rectangle2D.Double(Punto1.getX(),Punto1.getY(), Punto2.getX(),Punto2.getY()));          
+                dibuja_coordenada(g2,Punto1.getX(),Punto1.getY(),"P1");
+                dibuja_coordenada(g2,Punto1.getX()+Punto2.getX(),Punto1.getY()+Punto2.getY(),"P2");                         
+                break;
+            case 5://QuadCurve2D
+                if(relleno){            
+                    g2.fill(new QuadCurve2D.Double(Punto1.getX(), Punto1.getY(), Punto2.getX(), Punto2.getY(), Punto3.getX(), Punto3.getY()));                          
+                }else{
+                    g2.draw(new QuadCurve2D.Double(Punto1.getX(), Punto1.getY(), Punto2.getX(), Punto2.getY(), Punto3.getX(), Punto3.getY()));                          
+                }
+                g2.setStroke(new BasicStroke(1.0f));
+                g2.setColor(new Color(0,0,0));
+                g2.draw(new Line2D.Double(Punto1.getX(), Punto1.getY(), Punto2.getX(), Punto2.getY()));          
+                g2.draw(new Line2D.Double(Punto3.getX(), Punto3.getY(), Punto2.getX(), Punto2.getY()));          
+                dibuja_coordenada(g2,Punto1.getX(), Punto1.getY(),"Punto 1");
+                dibuja_coordenada(g2,Punto2.getX(), Punto2.getY(),"Punto de Control");
+                dibuja_coordenada(g2,Punto3.getX(), Punto3.getY(),"Punto 2");        
+                break;
+        }
+        this.repaint();
+   }
+
+   //dibuja la cuadricula 
+   public void grilla(Graphics2D g2){       
+     g2.setColor(new Color(0,0,0));
+     g2.setStroke(new BasicStroke(0.5f));   
+     g2.setFont(new Font("Arial", Font.PLAIN, 8));
+     //lineas horizontales
+     while(this.grilaX<= this.getSize().width){
+        this.grilaX= this.grilaX+20;
+        g2.draw(new Line2D.Double(this.grilaX,0, this.grilaX, this.getSize().height));      
+         g2.drawString(""+this.grilaX, this.grilaX+2, 10);
+     }
+     //lineas verticales
+     while(this.grilaY<= this.getSize().height){
+        this.grilaY= this.grilaY+20;
+        g2.draw(new Line2D.Double(0,this.grilaY, this.getSize().width,this.grilaY));      
+        g2.drawString(""+this.grilaY, 2, this.grilaY-2);
+     }
+     this.grilaY=0;
+     this.grilaX=0;            
+   }
+   
+   //dibuja las coordenas dadas  un punto P1,P2   
+public void dibuja_coordenada(Graphics2D g2,double x, double y,String t){       
+    NumberFormat mf = NumberFormat.getInstance(); 
+    mf.setMaximumFractionDigits(2); 
+    g2.setColor(new Color(255,0,0)); 
+    g2.setFont(new Font("Arial", Font.BOLD, 11));
+    g2.drawString(t + " ("+mf.format(x)+","+mf.format(y)+")",(float) (x+4),(float)  (y-10));       
+    g2.setStroke(new BasicStroke(4.5f));   
+    g2.draw(new Line2D.Double(x,y,x,y));      
+   } 
+   
+    /* metodos para inicializar las coordenas necesarias para los dibujos */
+    public void Line2D( String P1, String P2){        
+        this.Punto1 = ObtenerPunto(P1);
+        this.Punto2 = ObtenerPunto(P2);         
+        if((Punto1!=null)&&(Punto2!=null)){                        
+            this.Opcion=0;
+        }else
+        {
+            this.Opcion=-1;
+            JOptionPane.showMessageDialog(this,this.MensajeError+ "\n " +this.MensajeError1);            
+        }        
+    }
+    
+    public void Rectangle2D(String P1, String P2){        
+        this.Punto1 = ObtenerPunto(P1);
+        this.Punto2 = ObtenerPunto(P2);         
+        if((Punto1!=null)&&(Punto2!=null)){            
+            this.Opcion=1;
+        }else
+        {
+            this.Opcion=-1;
+            JOptionPane.showMessageDialog(this,this.MensajeError+ "\n " +this.MensajeError1);            
+        }             
+    }
+    
+    public void RoundRectangle2D( String P1, String P2, String ac, String lc){        
+        this.Punto1 = ObtenerPunto(P1);
+        this.Punto2 = ObtenerPunto(P2);         
+        if((Punto1!=null)&&(Punto2!=null)&&(EsUnNumero(ac))&&(EsUnNumero(lc))){            
+            this.ancho_curva=Float.valueOf(ac);
+            this.largo_curva=Float.valueOf(lc);
+            this.Opcion=2;
+        }else
+        {
+            this.Opcion=-1;
+            JOptionPane.showMessageDialog(this,this.MensajeError+ "\n " +this.MensajeError1);            
+        }              
+    }
+        
+   public void Ellipse2D(String P1, String P2){
+       this.Punto1 = ObtenerPunto(P1);
+       this.Punto2 = ObtenerPunto(P2);   
+       if((Punto1!=null)&&(Punto2!=null)){               
+            this.Opcion=3;
+        }else
+        {
+            this.Opcion=-1;
+            JOptionPane.showMessageDialog(this,this.MensajeError+ "\n " +this.MensajeError1);            
+        }           
+    }
+   
+      public void Arc2D(String P1, String P2,String ai, String af){        
+        this.Punto1 = ObtenerPunto(P1);
+        this.Punto2 = ObtenerPunto(P2);   
+         if((Punto1!=null)&&(Punto2!=null)&&(EsUnNumero(ai))&&(EsUnNumero(af))){            
+            this.angulo_inicio=Float.valueOf(ai);
+            this.angulo_fin=Float.valueOf(af);
+            this.Opcion=4;
+        }else
+        {
+            this.Opcion=-1;
+            JOptionPane.showMessageDialog(this,this.MensajeError+ "\n " +this.MensajeError1);                    
+        }                
+    }
+      
+    public void QuadCurve2D(String P1, String P2,String P3){        
+        this.Punto1 = ObtenerPunto(P1);
+        this.Punto2 = ObtenerPunto(P2);   
+        this.Punto3 = ObtenerPunto(P3);   
+         if((Punto1!=null)&&(Punto2!=null)&&(Punto3!=null)){               
+            this.Opcion=5;
+        }else
+        {
+            this.Opcion=-1;
+            JOptionPane.showMessageDialog(this,this.MensajeError+ "\n " +this.MensajeError1);                  
+        }             
+    }
+      
+/* MUESTRA LA VENTA DE DIALOGO [ESCOGER COLOR]*/
+    public Color Escoger_Color(java.awt.event.ActionEvent evt){
+        Color c = JColorChooser.showDialog(null,"Escoja un color",((JButton)evt.getSource()).getBackground());
+        this.color=c;
+        if(c!=null){return color;}else{return new Color(-1118482);}        
+    }
+    
+    public void setStroke(Float f){
+        this.grosor_linea = f;
+    }    
+    
+    public void setArco(int d){
+        this.estado_arco = d;
+    }
+    
+    public void setRelleno(){
+        this.relleno= !this.relleno;
+    }    
+
+     //dado un String de la forma [numero,numero] lo descompone en un objeto Point2D
+      public Point2D ObtenerPunto(String s){              
+        Point2D p=null;
+        //El minimo que se acepta es [0,0]
+        if(s.length()>=5){
+            if((s.substring(0,1).equals("["))&&(s.substring(s.length()-1,s.length()).equals("]"))){                
+                //se quitan los corchetes
+                String cadena = s.substring(1, s.length()-1);       
+                //se separan en un Array 
+                String [] numero = cadena.split(",");          
+                //si no existen 2 elementos en el array, el string  esta mal formado
+                if((numero.length>2)||(numero.length<2)){
+                    this.MensajeError= this.MensajeError3;                            
+                }
+                else{
+                    //se convierte los String en valores numericos   
+                    if((EsUnNumero(numero[0]))&&(EsUnNumero(numero[1]))){                          
+                        p = new Point2D.Float(Float.valueOf(numero[0]),Float.valueOf(numero[1]));            
+                    }
+                    else{
+                        this.MensajeError= this.MensajeError2;                            
+                    }         
+                }        
+            }    
+            else{
+                this.MensajeError= this.MensajeError4;                            
+            }
+        }        
+        return p;
+    }
+    
+     //metodo que dado un string lo convierte en numero, devuelve TRUE si tiene exito
+      private boolean EsUnNumero(String numero){
+        try {        
+            Float.parseFloat(numero);  
+            return true;  
+        } catch (NumberFormatException e){  
+            return false; 
+        }  
+      }     
+
+}

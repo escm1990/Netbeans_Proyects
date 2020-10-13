@@ -1,0 +1,36 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <form action="ServletDespliegaNombreApellido" method="post">
+           Nombree<input type="text" name="nombre"><br>
+            Apellido<input type="text" name="apellido"><br>
+            Edad<input type="text" name="edad"><br>
+            Email<input type="text" name="email"><br>
+            <br><b>Departamento:</b><br>
+            <select name="departamento" multiple size="5">
+                <option value="Sistemas">Sistemas</option>
+                <option value="Comercio">Comercio</option>
+                <option value="Finanzas">Finanzas</option>
+                <option value="Desarrollo">Desarrollo</option>
+                <option value="Analisis">Analisis</option>
+            </select><br><br>
+            <b>Lenguages de Programacion</b><br><br>
+            <input type="checkbox" name="lenguajes" value="c++">c++
+            <input type="checkbox" name="lenguajes" value="java">java
+            <input type="checkbox" name="lenguajes" value="php">php
+            <input type="checkbox" name="lenguajes" value="vb.net">vb.net
+            <input type="checkbox" name="lenguajes" value="asp.net">asp.net       
+            <input type="checkbox" name="lenguajes" value="ruby">ruby
+            <input type="checkbox" name="lenguajes" value="perl">perl
+            <br><br><input type="submit" name="Enviar Datos" value="enviar">
+        </form>
+    </body>
+</html>
