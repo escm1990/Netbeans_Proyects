@@ -15,10 +15,18 @@ public class Candidato {
     private int salarioDeseado;
     private Date fechaNacimiento;
     private String codigoPostal;
-    private String colonia;
     private String ciudad;
     private String comentario;
+    private int coloniaId;
 
+    public int getColoniaId() {
+        return coloniaId;
+    }
+
+    public void setColoniaId(int coloniaId) {
+        this.coloniaId = coloniaId;
+    }
+    
     public String getCodigoPostal() {
         return codigoPostal;
     }
@@ -33,14 +41,6 @@ public class Candidato {
 
     public void setCodigoPostal(String codigoPostal) {
         this.codigoPostal = codigoPostal;
-    }
-
-    public String getColonia() {
-        return colonia;
-    }
-
-    public void setColonia(String colonia) {
-        this.colonia = colonia;
     }
 
     public String getCiudad() {

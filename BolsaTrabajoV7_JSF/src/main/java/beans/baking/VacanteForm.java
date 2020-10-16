@@ -59,14 +59,16 @@ public class VacanteForm {
         UIViewRoot uIViewRoot = facesContext.getViewRoot(); //acceder a los elementos de la vista JSF
         String nuevoCodigoPostal = (String) valueChangeEvent.getNewValue();
         if(nuevoCodigoPostal.equals("03810")){
-            //recuperando un componente de la vista por ID
-            UIInput coloniaInputText = (UIInput) uIViewRoot.findComponent("vacanteForm:colonia");
-            //haciendo cambio en un componente desde Java a la Vista
-            String nuevaColonia = "Napoles";
-            coloniaInputText.setValue(nuevaColonia);
-            coloniaInputText.setSubmittedValue(nuevaColonia);
             
+            //trabajando con un selectItem
+            UIInput coloniaIdSelect = (UIInput) uIViewRoot.findComponent("vacanteForm:coloniaId");
+            int coloniaId = 1;
+            coloniaIdSelect.setValue(coloniaId);
+            coloniaIdSelect.setSubmittedValue(coloniaId);
+            
+            //recuperando un componente de la vista por ID
             UIInput ciudadInputText = (UIInput) uIViewRoot.findComponent("vacanteForm:ciudad");
+            //haciendo cambio en un componente desde Java a la Vista
             String nuevaCiudad = "Ciudad de Mexico";
             ciudadInputText.setValue(nuevaCiudad);
             ciudadInputText.setSubmittedValue(nuevaCiudad);
