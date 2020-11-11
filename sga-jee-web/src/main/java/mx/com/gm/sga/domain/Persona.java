@@ -1,34 +1,39 @@
 package mx.com.gm.sga.domain;
 
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Persona implements Serializable{
     private static final long serialVersionUID = 1L;
-    private int personaId;
-    private String nombre;
-    private String apellido;
-    private String email;
-    private String telefono;
+   
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_persona")
+    private int idPersona;
 
-    public Persona() {
-    }
+    private String nombre;
     
-    public Persona(int personaId, String nombre, String apellido, String email, String telefono) {
-        this.personaId = personaId;
+    private String apellido;
+    
+    private String email;
+    
+    private String telefono;
+    
+    public Persona(){
+    }
+
+    public Persona(String nombre, String apellido, String email, String telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.telefono = telefono;
     }
-
-    public int getPersonaId() {
-        return personaId;
-    }
-
-    public void setPersonaId(int personaId) {
-        this.personaId = personaId;
-    }
-
+    
     public String getNombre() {
         return nombre;
     }
@@ -60,11 +65,18 @@ public class Persona implements Serializable{
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+    
+    public int getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(int idPersona) {
+        this.idPersona = idPersona;
+    }
 
     @Override
     public String toString() {
-        return "Persona{" + "personaId=" + personaId + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", telefono=" + telefono + '}';
+        return "Persona{" + "idPersona=" + idPersona + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", telefono=" + telefono + '}';
     }
-    
     
 }
