@@ -6,8 +6,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "persona")
+@NamedQueries({
+    //las namedqueries son jpql, en vez de recuperar registros de una tabla recupera objetos
+    @NamedQuery(name = "Persona.findAll", query = "SELECT p FROM Persona p ORDER BY p.idPersona")
+})
 public class Persona implements Serializable{
     private static final long serialVersionUID = 1L;
    
