@@ -6,7 +6,7 @@ import mx.com.gm.sga.domain.Persona;
 
 @Local
 public interface PersonaService {
-      public List<Persona> listarPersonas();
+    public List<Persona> listarPersonas();
     
     public Persona encontrarPersonaPorId(Persona persona);
     
