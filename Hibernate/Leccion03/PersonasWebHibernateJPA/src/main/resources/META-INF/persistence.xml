@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http//xmlns.jcp.org/xml/ns/persistence http//xmlns.jcp.org/xml/ns/persistence_2_2.xsd">
+
+    <!-- Unidad de persistencia para conectarse a la BD -->
+    <persistence-unit name="HibernatePU" transaction-type="RESOURCE_LOCAL">
+        <!-- Se debe definir la clase proveedora de la persistencia -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!-- Defiiendo el paquete y las clases de entidad -->
+        <class>mx.com.gm.domain.Persona</class>
+        <!-- Propiedades de conexión a BD -->
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/test?useSSL=false&amp;useTimezone=true&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="admin"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <!-- Ver SQL en consola -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+        </properties>
+        
+        
+    </persistence-unit>
+
+</persistence>
